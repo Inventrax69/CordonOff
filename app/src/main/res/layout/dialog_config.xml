@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:padding="@dimen/_5sdp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="User Settings"
+        android:textStyle="normal"
+        android:textSize="@dimen/_14sdp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_gravity="center"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/distanceInMeters"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Distance(In Meters)"
+        android:visibility="gone"
+        android:layout_margin="@dimen/_1sdp"
+        android:padding="@dimen/_1sdp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etDistanceInMeters"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:inputType="number"
+            android:textSize="@dimen/_14sdp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/timeInMint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_1sdp"
+        android:visibility="gone"
+        android:hint="Time(In minutes)"
+        android:padding="@dimen/_1sdp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ettimeInMint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:gravity="center"
+            android:textSize="@dimen/_14sdp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnLogOut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/_5sdp"
+            android:gravity="center"
+            android:textAllCaps="false"
+            style="@style/ButtonStyle"
+            android:text="   LOG OUT  " />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnClose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/_5sdp"
+            android:gravity="center"
+            android:textAllCaps="false"
+            style="@style/ButtonStyle"
+            android:text=" CLOSE " />
+
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>

@@ -1,0 +1,89 @@
+<resources>
+    <string name="app_name">CordonOff</string>
+    <string name="message_write_error">Error Writing Message !</string>
+    <string name="message_write_success">Successfully written to Tag !</string>
+    <string name="message_write_progress">Writing to Tag..</string>
+    <string name="message_tag_detected">NFC Tag Detected !</string>
+    <string name="message_read_tag">Read from NFC Tag</string>
+    <string name="message_write_tag">Write to NFC Tag</string>
+    <string name="message_tap_tag">Tap the NFC Tag to your device !</string>
+    <string name="hint_message">Message</string>
+    <string name="full_name">Full Name*</string>
+
+    <string-array name="india_states">
+        <item>Andaman and Nicobar Islands</item>
+        <item>Andhra Pradesh</item>
+        <item>Arunachal Pradesh</item>
+        <item>Assam</item>
+        <item>Bihar</item>
+        <item>Chandigarh</item>
+        <item>Chhattisgarh</item>
+        <item>Dadra and Nagar Haveli</item>
+        <item>Daman and Diu</item>
+        <item>Delhi</item>
+        <item>Goa</item>
+        <item>Gujarat</item>
+        <item>Haryana</item>
+        <item>Himachal Pradesh</item>
+        <item>Jammu and Kashmir</item>
+        <item>Jharkhand</item>
+        <item>Karnataka</item>
+        <item>Kerala</item>
+        <item>Lakshadweep</item>
+        <item>Madhya Pradesh</item>
+        <item>Maharashtra</item>
+        <item>Manipur</item>
+        <item>Meghalaya</item>
+        <item>Mizoram</item>
+        <item>Nagaland</item>
+        <item>Orissa</item>
+        <item>Pondicherry</item>
+        <item>Punjab</item>
+        <item>Rajasthan</item>
+        <item>Sikkim</item>
+        <item>Tamil Nadu</item>
+        <item>Telangana</item>
+        <item>Tripura</item>
+        <item>Uttaranchal</item>
+        <item>Uttar Pradesh</item>
+        <item>West Bengal</item>
+    </string-array>
+
+    <string-array name="andra_cities">
+        <item>Visakhapatnam</item>
+        <item>Vijayawada</item>
+        <item>Rajamahendravaram</item>
+        <item>Guntur</item>
+        <item>Kakinada</item>
+        <item>Nellore</item>
+        <item>Kurnool</item>
+        <item>Kadapa</item>
+        <item>Tirupati</item>
+        <item>Eluru</item>
+        <item>Ongole</item>
+        <item>Anantapur</item>
+        <item>Vizianagaram</item>
+        <item>Tenali</item>
+        <item>Proddatur</item>
+        <item>Nandyal</item>
+        <item>Adoni</item>
+        <item>Madanapalle</item>
+        <item>Machilipatnam</item>
+        <item>Chittoor</item>
+        <item>Hindupur</item>
+        <item>Bhimavaram</item>
+        <item>Srikakulam</item>
+        <item>Anakapalle</item>
+        <item>Tadepalligudem</item>
+        <item>Dharmavaram </item>
+        <item>Gudivada</item>
+        <item>Narasaraopet</item>
+        <item>Tadipatri</item>
+        <item>Chilakaluripet</item>
+        <item>Palakollu</item>
+        <item>Amaravati</item>
+        <item>Kavali</item>
+
+    </string-array>
+
+</resources>

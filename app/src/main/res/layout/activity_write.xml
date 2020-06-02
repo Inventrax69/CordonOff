@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".RegistrationActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/app_color"
+        app:titleTextColor="@color/white"
+        app:title="Cordonoff"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tag activation"
+        android:textColor="@color/white"
+        android:background="@color/app_color"
+        android:textSize="@dimen/_15sdp"
+        android:padding="@dimen/_7sdp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/_5sdp"
+        android:padding="@dimen/_2sdp">
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                tools:context=".RegistrationActivity">
+
+                <TextView
+                    android:id="@+id/txtData"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="1"
+                        android:padding="@dimen/_3sdp">
+
+                        <EditText
+                            android:id="@+id/etAadharNumberPassport"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_35sdp"
+                            android:layout_margin="@dimen/_3sdp"
+                            android:background="@drawable/bg_stroke"
+                            android:inputType="text"
+                            android:hint=" Enter Aadhar/Passport Number"
+                            android:maxLength="12"
+                            android:maxLines="1"
+                            android:padding="@dimen/_5sdp"
+                            android:layout_weight="0.87"/>
+
+                        <ImageView
+                            android:id="@+id/ivSearch"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_search"
+                            android:rotation="80"
+                            android:padding="@dimen/_2sdp"
+                            android:layout_weight="0.13"
+                            android:alpha="0.6"/>
+
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:id="@+id/lblPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_2sdp"
+                        android:text="  Password"
+                        android:textColor="#651FFF"
+                        android:textSize="@dimen/_15sdp"
+                        android:textStyle="bold"
+                        android:visibility="gone" />
+
+                    <EditText
+                        android:id="@+id/editPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_35sdp"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:background="@drawable/bg_stroke"
+                        android:inputType="textPassword"
+                        android:maxLines="1"
+                        android:paddingStart="@dimen/_5sdp"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:paddingEnd="@dimen/_5sdp"
+                        android:paddingRight="@dimen/_5sdp"
+                        android:visibility="gone" />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/llDetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:padding="@dimen/_8sdp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_25sdp"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:layout_weight="0.5"
+                                android:text="Name:"
+                                android:textSize="@dimen/_13sdp" />
+
+                            <TextView
+                                android:id="@+id/txtName"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:layout_weight="1.5"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_13sdp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_25sdp"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:layout_weight="0.5"
+                                android:text="UID:"
+                                android:textSize="@dimen/_13sdp" />
+
+                            <TextView
+                                android:id="@+id/txtUID"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:layout_weight="1.5"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_13sdp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_25sdp"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:layout_weight="0.5"
+                                android:text="Phone:"
+                                android:textSize="@dimen/_13sdp" />
+
+                            <TextView
+                                android:id="@+id/txtPhone"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:layout_weight="1.5"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_13sdp" />
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="10"
+                        android:layout_gravity="center"
+                        android:layout_centerInParent="true"
+                        android:padding="@dimen/_5sdp">
+
+
+                        <LinearLayout
+                            android:id="@+id/llScanQR"
+                            android:layout_weight="5"
+                            android:gravity="center"
+                            android:layout_gravity="center"
+                            android:padding="@dimen/_20sdp"
+                            android:layout_margin="@dimen/_10sdp"
+                            android:orientation="vertical"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/background_selector">
+
+
+                            <ImageView
+                                android:id="@+id/loginAsUser"
+                                android:layout_width="@dimen/_60sdp"
+                                android:layout_height="@dimen/_60sdp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_qr_code" />
+
+                            <TextView
+                                android:id="@+id/txtScanQRCode"
+                                android:text="Scan QR Code"
+                                android:padding="@dimen/_2sdp"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="@dimen/_16sdp"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/llScanNFC"
+                            android:layout_weight="5"
+                            android:gravity="center"
+                            android:layout_gravity="center"
+                            android:padding="@dimen/_20sdp"
+                            android:layout_margin="@dimen/_10sdp"
+                            android:orientation="vertical"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/background_selector">
+
+                            <ImageView
+                                android:id="@+id/loginAsAdmin"
+                                android:layout_width="@dimen/_60sdp"
+                                android:layout_height="@dimen/_60sdp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_nfc_icon"
+                                />
+
+
+                            <TextView
+                                android:id="@+id/txtWriteTag"
+                                android:text="Write to NFC Tag"
+                                android:padding="@dimen/_2sdp"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="@dimen/_16sdp"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent" />
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+
+
+            </LinearLayout>
+
+
+        </androidx.core.widget.NestedScrollView>
+
+    </RelativeLayout>
+
+
+</LinearLayout>
