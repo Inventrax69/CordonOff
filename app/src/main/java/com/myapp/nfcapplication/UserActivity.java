@@ -137,6 +137,7 @@ public class UserActivity extends AppCompatActivity implements OnMapReadyCallbac
         alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 60000, 60000, pendingIntent);
 
 
+        //
 
         //alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 60000, 60000, pendingIntent);
     }
