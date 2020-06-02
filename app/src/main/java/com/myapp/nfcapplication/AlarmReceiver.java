@@ -40,6 +40,8 @@ public class AlarmReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
+        //int value= intent.getExtras().getInt("intent2",0);
+
         // Date currentTime = Calendar.getInstance().getTime();
 
         /*AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);*/
@@ -60,12 +62,12 @@ public class AlarmReceiver extends BroadcastReceiver {
             // mp.stop();
 
 
-            int violationCount = prefs.getInt("violationCount", 0);
+            int violationCount = prefs.getInt(KeyValues.VIOLATION_COUNT, 0);
             int customerId = prefs.getInt(KeyValues.CUSTOMERID, 0);
             int violationValue = prefs.getInt(KeyValues.VIOLATION_VALUE, 0);
 
             if (violationCount > 2) {
-                editor.putInt(KeyValues.VIOLATION_VALUE, violationValue + 1);
+                editor.putInt(KeyValues.VIOLATION_COUNT, violationCount + 1);
                 editor.putInt(KeyValues.IS_BAND_ACTIVE, 1);
                 //api
 
@@ -77,7 +79,7 @@ public class AlarmReceiver extends BroadcastReceiver {
                 }*/
 
             }
-            editor.putInt("violationCount", violationCount + 1);
+            editor.putInt(KeyValues.VIOLATION_VALUE, violationValue + 1);
             editor.apply();
 
             Toast.makeText(context, "ALram", Toast.LENGTH_SHORT).show();
@@ -93,7 +95,7 @@ public class AlarmReceiver extends BroadcastReceiver {
 
             String input = intent.getStringExtra("inputExtra");
             createNotificationChannel();
-            Intent notificationIntent = new Intent(context, UserLoginActivity.class);
+            Intent notificationIntent = new Intent(context, SplashActivity.class);
             PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, notificationIntent, 0);
             Notification notification = new NotificationCompat.Builder(context, CHANNEL_ID)
                     .setContentTitle("Please scan the Qr code or NFC")

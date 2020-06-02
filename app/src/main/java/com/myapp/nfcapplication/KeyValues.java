@@ -31,5 +31,7 @@ public class KeyValues {
     public static final String IS_BAND_ACTIVE = "isBandActive";
     public static final String IS_LOCATION_EXCEED = "isLocationExceed";
     public static final String IS_LOGIN = "isLogin";
+    public static final String CONFIGURED_GEO_LOCATION = "configuredGeoLocation";
+    public static final String CONFIGURED_TIME = "configuredTime";
 
 }

@@ -2,6 +2,7 @@ package com.myapp.nfcapplication;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -19,6 +20,10 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
+import android.net.ConnectivityManager;
+import android.net.Network;
+import android.net.NetworkCapabilities;
+import android.net.NetworkInfo;
 import android.nfc.FormatException;
 import android.nfc.NdefMessage;
 import android.nfc.NfcAdapter;
@@ -38,6 +43,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -75,6 +81,7 @@ import com.myapp.nfcapplication.Interface.ApiInterface;
 import com.myapp.nfcapplication.Pojo.CustomerRegistration;
 
 import java.io.IOException;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -96,7 +103,7 @@ public class UserActivity extends AppCompatActivity implements OnMapReadyCallbac
     private NfcAdapter mNfcAdapter;
     final protected static char[] hexArray = "0123456789ABCDEF".toCharArray();
     TextView txtData, txtLat, txtLong, txtMyLocation, txtLastUpdate, txtRegDate, txtCDaysPending,
-            txtViolationsRecorded, scanNFCTag, txtUserName, txtPhoneNumber;
+            txtViolationsRecorded, scanNFCTag, txtUserName, txtPhoneNumber, tvQuarentineRange;
     TextView scanQrCode;
     Button setLocation;
     int PERMISSION_ID = 44;
@@ -121,7 +128,8 @@ public class UserActivity extends AppCompatActivity implements OnMapReadyCallbac
     MapFragment mapFragment;
     AlertDialog.Builder builder;
     Date currentTime = null, date = null;
-    Button btnLogOut, btnClose;
+    Button btnLogOut, btnClose, btnSave;
+    EditText etDistanceInMeters, etTimeInMinutes;
     LinearLayout linearDialog;
 
     private void startAlarm() {
@@ -134,10 +142,15 @@ public class UserActivity extends AppCompatActivity implements OnMapReadyCallbac
         if (alarmManager != null)
             alarmManager.cancel(pendingIntent);
 
-        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 60000, 60000, pendingIntent);
+        int configuredTime = prefs.getInt(KeyValues.CONFIGURED_TIME,1);
+        int violationValue = prefs.getInt(KeyValues.VIOLATION_VALUE,0);
 
-
-        //
+        // Configure time as per the requirement
+        if(violationValue<2){
+            alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 60000, 60000, pendingIntent);
+        }else {
+            alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 60000, configuredTime*60000, pendingIntent);
+        }
 
         //alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 60000, 60000, pendingIntent);
     }
@@ -198,7 +211,10 @@ public class UserActivity extends AppCompatActivity implements OnMapReadyCallbac
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+        tvQuarentineRange = findViewById(R.id.tvQuarentineRange);
+        tvQuarentineRange.setText(prefs.getInt(KeyValues.CONFIGURED_GEO_LOCATION,50)+" Meters");
 
+        //checkInternetConnection(UserActivity.this);
 /*
         txtRegDate.setText("20-05-2020");
         Date currentTime = Calendar.getInstance().getTime();
@@ -290,12 +306,12 @@ public class UserActivity extends AppCompatActivity implements OnMapReadyCallbac
         pieChart.animateXY(2000, 2000);
         pieChart.invalidate();
 
-        int violationValue = prefs.getInt(KeyValues.VIOLATION_VALUE, 0);
+        int violationCount = prefs.getInt(KeyValues.VIOLATION_COUNT, 0);
         String lastUpdate = prefs.getString(KeyValues.LAST_UPDATE, "");
         String myAddress = prefs.getString(KeyValues.HOME_ADDRESS, "");
         String homeLat = prefs.getString(KeyValues.LATITUDE, "");
         String homeLong = prefs.getString(KeyValues.LONGITUDE, "");
-        txtViolationsRecorded.setText("" + violationValue);
+        txtViolationsRecorded.setText("" + violationCount);
 
         if (isHomeQuarantine == 0) {
             setLocation.setVisibility(View.VISIBLE);
@@ -432,6 +448,10 @@ public class UserActivity extends AppCompatActivity implements OnMapReadyCallbac
 
                 btnLogOut = dialogUserSetting.findViewById(R.id.btnLogOut);
                 btnClose = dialogUserSetting.findViewById(R.id.btnClose);
+                btnSave = dialogUserSetting.findViewById(R.id.btnSave);
+
+                etDistanceInMeters = dialogUserSetting.findViewById(R.id.etDistanceInMeters);
+                etTimeInMinutes = dialogUserSetting.findViewById(R.id.etTimeInMinutes);
 
                 btnLogOut.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -450,6 +470,28 @@ public class UserActivity extends AppCompatActivity implements OnMapReadyCallbac
                     @Override
                     public void onClick(View view) {
                         dialogUserSetting.dismiss();
+                    }
+                });
+
+                btnSave.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        if(!etTimeInMinutes.getText().toString().isEmpty() && !etDistanceInMeters.getText().toString().isEmpty()){
+                            if(!etTimeInMinutes.getText().toString().equalsIgnoreCase("0") && !etDistanceInMeters.getText().toString().equalsIgnoreCase("0")) {
+                                dialogUserSetting.dismiss();
+                                tvQuarentineRange.setText(prefs.getInt(KeyValues.CONFIGURED_GEO_LOCATION,50)+" Meters");
+                                SharedPreferences.Editor editor = getSharedPreferences("CordonOff", MODE_PRIVATE).edit();
+                                editor.putInt(KeyValues.CONFIGURED_GEO_LOCATION, Integer.parseInt(etDistanceInMeters.getText().toString()));
+                                editor.putInt(KeyValues.CONFIGURED_TIME, Integer.parseInt(etTimeInMinutes.getText().toString()));
+                                editor.apply();
+                            }else {
+                                Toast.makeText(UserActivity.this, "Please enter valid details.", Toast.LENGTH_SHORT).show();
+                            }
+                        }else {
+                            Toast.makeText(UserActivity.this, "Please enter details.", Toast.LENGTH_SHORT).show();
+                        }
+
                     }
                 });
 
@@ -475,6 +517,54 @@ public class UserActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
 
 
+    }
+
+    public static Boolean isLocationEnabled(Context context)
+    {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+// This is new method provided in API 28
+            LocationManager lm = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+            return lm.isLocationEnabled();
+        } else {
+// This is Deprecated in API 28
+            int mode = Settings.Secure.getInt(context.getContentResolver(), Settings.Secure.LOCATION_MODE,
+                    Settings.Secure.LOCATION_MODE_OFF);
+            return  (mode != Settings.Secure.LOCATION_MODE_OFF);
+
+        }
+    }
+
+    private boolean checkInternetConnection(Activity activity) {
+
+        ConnectivityManager connectivityManager = (ConnectivityManager) activity.getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            Network network = null;
+            if (connectivityManager == null) {
+                return false;
+            } else {
+                network = connectivityManager.getActiveNetwork();
+                NetworkCapabilities networkCapabilities = connectivityManager.getNetworkCapabilities(network);
+                if (networkCapabilities == null) {
+                    return false;
+                }
+                if (networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)){
+                    return true;
+                }
+                if ( networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)){
+                    return true;
+                }
+
+            }
+        } else {
+            if (connectivityManager == null) {
+                return false;
+            }
+            if (connectivityManager.getActiveNetworkInfo() == null) {
+                return false;
+            }
+            return connectivityManager.getActiveNetworkInfo().isConnected();
+        }
+        return false;
     }
 
 
@@ -797,7 +887,7 @@ public class UserActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         Toast.makeText(this, "" + String.format("%.2f", distanceInMeters), Toast.LENGTH_SHORT).show();
 
-        float violationDistance = 50;
+        float violationDistance = prefs.getInt(KeyValues.CONFIGURED_GEO_LOCATION,50);
 
         if (violationDistance < distanceInMeters) {
             SharedPreferences.Editor editor = UserActivity.this.getSharedPreferences("CordonOff", MODE_PRIVATE).edit();
@@ -1001,7 +1091,7 @@ public class UserActivity extends AppCompatActivity implements OnMapReadyCallbac
         Date currentTime = Calendar.getInstance().getTime();
         SimpleDateFormat fmtOut = new SimpleDateFormat("dd-MM-yyyy HH:mm");
         SharedPreferences.Editor editor = getSharedPreferences("CordonOff", MODE_PRIVATE).edit();
-        editor.putInt("violationCount", 0);
+        editor.putInt(KeyValues.VIOLATION_VALUE, 0);
         editor.putString(KeyValues.LAST_UPDATE, fmtOut.format(currentTime));
         editor.apply();
 

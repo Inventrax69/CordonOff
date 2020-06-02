@@ -13,6 +13,7 @@
         android:text="User Settings"
         android:textStyle="normal"
         android:textSize="@dimen/_14sdp"
+        android:layout_marginBottom="@dimen/_15sdp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_gravity="center"/>
 
@@ -21,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Distance(In Meters)"
-        android:visibility="gone"
+        android:visibility="visible"
         android:layout_margin="@dimen/_1sdp"
         android:padding="@dimen/_1sdp">
 
@@ -29,7 +30,6 @@
             android:id="@+id/etDistanceInMeters"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:inputType="number"
             android:textSize="@dimen/_14sdp" />
 
@@ -40,16 +40,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_1sdp"
-        android:visibility="gone"
+        android:visibility="visible"
         android:hint="Time(In minutes)"
         android:padding="@dimen/_1sdp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ettimeInMint"
+            android:id="@+id/etTimeInMinutes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
-            android:gravity="center"
             android:textSize="@dimen/_14sdp" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -71,7 +70,7 @@
             android:gravity="center"
             android:textAllCaps="false"
             style="@style/ButtonStyle"
-            android:text="   LOG OUT  " />
+            android:text="   Logout  " />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnClose"
@@ -82,7 +81,18 @@
             android:gravity="center"
             android:textAllCaps="false"
             style="@style/ButtonStyle"
-            android:text=" CLOSE " />
+            android:text=" Close " />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/_5sdp"
+            android:gravity="center"
+            android:textAllCaps="false"
+            style="@style/ButtonStyle"
+            android:text=" Save " />
 
     </LinearLayout>
 

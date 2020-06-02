@@ -333,6 +333,7 @@
 
 
                         <TextView
+                            android:id="@+id/tvQuarentineRange"
                         android:layout_margin="@dimen/_2sdp"
                         android:padding="@dimen/_2sdp"
                         android:layout_width="wrap_content"
