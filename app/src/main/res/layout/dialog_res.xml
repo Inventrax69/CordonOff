@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="@dimen/_10sdp"
+    android:background="@drawable/background_selector"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:src="@drawable/ic_tick"
+        android:layout_gravity="center"
+        android:paddingTop="@dimen/_10sdp"
+        android:layout_width="@dimen/_75sdp"
+        android:layout_height="@dimen/_75sdp" />
+
+
+    <TextView
+        android:text="Registration Sucessful!"
+        android:textStyle="bold"
+        android:textSize="@dimen/_16sdp"
+        android:paddingTop="@dimen/_10sdp"
+        android:textColor="@color/colorPrimary"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:text="Your device is sucessfully registered \n with Cordonoff."
+        android:textStyle="normal"
+        android:textSize="@dimen/_12sdp"
+        android:paddingTop="@dimen/_10sdp"
+        android:textColor="@color/black"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/btnOK"
+        android:text="     OK     "
+        android:textStyle="bold"
+        android:textSize="@dimen/_12sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:padding="@dimen/_10sdp"
+        android:textColor="@color/white"
+        android:background="@drawable/ok_button"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

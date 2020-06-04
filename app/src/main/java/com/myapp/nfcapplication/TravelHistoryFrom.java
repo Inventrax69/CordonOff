@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.nfc.NfcAdapter;
 import android.os.Build;
 import android.os.Bundle;
@@ -41,8 +42,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static java.security.AccessController.getContext;
-
 
 @RequiresApi(api = Build.VERSION_CODES.M)
 public class TravelHistoryFrom extends AppCompatActivity {
@@ -68,6 +67,7 @@ public class TravelHistoryFrom extends AppCompatActivity {
     Toolbar toolBar;
 
     Gson gson;
+    Dialog dialogRes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -191,11 +191,34 @@ public class TravelHistoryFrom extends AppCompatActivity {
                         MaterialDialogUtils.showUploadSuccessDialog(TravelHistoryFrom.this, "Uploaded");
                         clearTravelHistory();
 
-                        Intent intent = new Intent(TravelHistoryFrom.this, UserLoginActivity.class);
+                        dialogRes = new Dialog(TravelHistoryFrom.this);
+                        dialogRes.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                        dialogRes.setCancelable(true);
+                        dialogRes.setTitle("User Settings");
+                        dialogRes.setContentView(R.layout.dialog_res);
+                        dialogRes.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                        dialogRes.show();
+
+
+                        Button btnOK=dialogRes.findViewById(R.id.btnOK);
+                        btnOK.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Intent intent = new Intent(TravelHistoryFrom.this, UserLoginActivity.class);
+                                //intent.putExtra("details", customerRegistrationDto);
+                                startActivity(intent);
+                                finish();
+
+                                Toast.makeText(TravelHistoryFrom.this, "Registration completed", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+
+/*                        Intent intent = new Intent(TravelHistoryFrom.this, UserLoginActivity.class);
                         //intent.putExtra("details", customerRegistrationDto);
                         startActivity(intent);
 
-                        Toast.makeText(TravelHistoryFrom.this, "Registration completed", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(TravelHistoryFrom.this, "Registration completed", Toast.LENGTH_SHORT).show();*/
 
                     } else {
                         Toast.makeText(TravelHistoryFrom.this, "Something went wrong, Please try agian.", Toast.LENGTH_SHORT).show();

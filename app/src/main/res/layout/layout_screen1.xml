@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    
+    <LinearLayout
+        android:id="@+id/linear1"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/intro_img"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logo"
+            android:layout_marginTop="@dimen/_50sdp"
+            android:padding="@dimen/_30sdp"
+            android:scaleType="centerInside" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:background="@drawable/call"
+            android:backgroundTint="#CFE8FF"
+            android:paddingTop="@dimen/_20sdp"
+            android:paddingStart="@dimen/_25sdp"
+            android:paddingLeft="@dimen/_25sdp"
+            android:paddingEnd="@dimen/_25sdp"
+            android:paddingRight="@dimen/_25sdp"
+            android:layout_height="@dimen/_150sdp">
+
+            <TextView
+                android:id="@+id/intro_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_10sdp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:text="Cordonoff is a Digital Surveillance and Geo-Fence Enforcement Application designed to prevent the spread of the coronavirus."
+                android:paddingTop="@dimen/_20sdp"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingLeft="@dimen/_10sdp"
+                android:paddingEnd="@dimen/_10sdp"
+                android:paddingRight="@dimen/_10sdp"
+                android:textAlignment="center" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/intro_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="8dp"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear2"
+        android:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:background="@drawable/call1"
+            android:backgroundTint="#CFE8FF"
+            android:layout_marginTop="@dimen/_50sdp"
+            android:paddingTop="@dimen/_10sdp"
+            android:paddingStart="@dimen/_25sdp"
+            android:paddingLeft="@dimen/_25sdp"
+            android:paddingEnd="@dimen/_25sdp"
+            android:paddingRight="@dimen/_25sdp"
+            android:layout_height="@dimen/_150sdp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_10sdp"
+                android:textColor="@color/black"
+                android:text="Cordonoff acts as your guide towards a safer self-quarantine period by using geo-fence monitoring to ensure you pass the window of COVID-19 transmission risk."
+                android:paddingTop="@dimen/_25sdp"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingLeft="@dimen/_10sdp"
+                android:paddingEnd="@dimen/_10sdp"
+                android:paddingRight="@dimen/_10sdp"
+                android:textAlignment="center" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logo"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:padding="@dimen/_10sdp"
+            android:scaleType="centerInside" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:background="@drawable/call"
+            android:backgroundTint="#CFE8FF"
+            android:paddingTop="@dimen/_20sdp"
+            android:paddingStart="@dimen/_25sdp"
+            android:paddingLeft="@dimen/_25sdp"
+            android:paddingEnd="@dimen/_25sdp"
+            android:paddingRight="@dimen/_25sdp"
+            android:layout_height="@dimen/_150sdp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_10sdp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:text="Simply, \n 1. Install the app, \n 2. Register with your details,\n  3. Wear the NFC enabled tracking band, \n 4. Map your self-quarantine location \n\n  Sit tight and let Cordonoff handle your safety during the Isolation \n"
+                android:paddingTop="@dimen/_20sdp"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingLeft="@dimen/_10sdp"
+                android:paddingEnd="@dimen/_10sdp"
+                android:paddingRight="@dimen/_10sdp"
+                android:textAlignment="center" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

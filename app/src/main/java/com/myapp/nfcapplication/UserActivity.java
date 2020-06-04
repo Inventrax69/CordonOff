@@ -8,7 +8,6 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.PendingIntent;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
@@ -23,7 +22,6 @@ import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.Network;
 import android.net.NetworkCapabilities;
-import android.net.NetworkInfo;
 import android.nfc.FormatException;
 import android.nfc.NdefMessage;
 import android.nfc.NfcAdapter;
@@ -52,9 +50,11 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieData;
@@ -81,7 +81,6 @@ import com.myapp.nfcapplication.Interface.ApiInterface;
 import com.myapp.nfcapplication.Pojo.CustomerRegistration;
 
 import java.io.IOException;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -131,6 +130,9 @@ public class UserActivity extends AppCompatActivity implements OnMapReadyCallbac
     Button btnLogOut, btnClose, btnSave;
     EditText etDistanceInMeters, etTimeInMinutes;
     LinearLayout linearDialog;
+    private DrawerFragment drawerFragment;
+    boolean mSlideState=false;
+    DrawerLayout  drawerLayout;
 
     private void startAlarm() {
 
@@ -349,9 +351,50 @@ public class UserActivity extends AppCompatActivity implements OnMapReadyCallbac
         btnlocation = findViewById(R.id.btnlocation);
         linearDialog = findViewById(R.id.linearDialog);
 
-        TextDrawable drawable = TextDrawable.builder().buildRound(txtUserName.getText().toString().substring(0, 1), Color.parseColor("#FFFFFF"));
+        drawerFragment = (DrawerFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
 
-        fText.setImageDrawable(drawable);
+        drawerLayout=(DrawerLayout)findViewById(R.id.drawer_layout);
+
+        drawerLayout.setDrawerListener(new ActionBarDrawerToggle(UserActivity.this,
+                drawerLayout,
+                0,
+                0){
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+                mSlideState=false;//is Closed
+            }
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                mSlideState=true;//is Opened
+            }});
+
+        fText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clickEventSlide();
+            }
+        });
+
+
+
+/*
+        fText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // If the navigation drawer is not open then open it, if its already open then close it.
+                if(!drawerLayout.isDrawerOpen(Gravity.START))
+                    drawerLayout.openDrawer(Gravity.START);
+                else
+                    drawerLayout.closeDrawer(mDrawerLayout);
+            }
+        });*/
+
+
+/*        TextDrawable drawable = TextDrawable.builder().buildRound(txtUserName.getText().toString().substring(0, 1), Color.parseColor("#FFFFFF"));
+
+        fText.setImageDrawable(drawable);*/
 
 
         int isBandActive = prefs.getInt(KeyValues.IS_BAND_ACTIVE, 0);
@@ -517,6 +560,14 @@ public class UserActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
 
 
+    }
+
+    public void clickEventSlide(){
+        if(mSlideState){
+            drawerLayout.closeDrawer(Gravity.START);
+        }else{
+            drawerLayout.openDrawer(Gravity.START);
+        }
     }
 
     public static Boolean isLocationEnabled(Context context)
