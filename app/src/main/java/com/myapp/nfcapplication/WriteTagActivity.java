@@ -33,6 +33,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -87,7 +88,7 @@ public class WriteTagActivity extends AppCompatActivity {
     private int customerId;
     LinearLayout llScanQR, llScanNFC, llDetails;
     EditText etAadharNumberPassport;
-    ImageView ivSearch;
+    Button btnSearch;
 
     int PERMISSION_ID = 44;
     FusedLocationProviderClient mFusedLocationClient;
@@ -125,7 +126,7 @@ public class WriteTagActivity extends AppCompatActivity {
         llScanNFC = findViewById(R.id.llScanNFC);
         llScanQR = findViewById(R.id.llScanQR);
 
-        ivSearch = findViewById(R.id.ivSearch);
+        btnSearch = findViewById(R.id.btnSearch);
         etAadharNumberPassport = findViewById(R.id.etAadharNumberPassport);
 
         qrScan = new IntentIntegrator(this);
@@ -155,9 +156,12 @@ public class WriteTagActivity extends AppCompatActivity {
             }
         });
 
-        ivSearch.setOnClickListener(new View.OnClickListener() {
+        btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // To hide keyboard
+                InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+                imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
                 if (!etAadharNumberPassport.getText().toString().isEmpty())
                     getDetails();
                 else

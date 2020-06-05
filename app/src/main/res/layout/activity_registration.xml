@@ -13,17 +13,7 @@
         android:layout_height="wrap_content"
         android:background="@color/app_color"
         app:titleTextColor="@color/white"
-        app:title="Cordonoff"/>
-    <TextView
-        android:id="@+id/txtRegistration"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Registration"
-        android:textColor="@color/white"
-        android:background="@color/app_color"
-        android:textSize="@dimen/_15sdp"
-        android:padding="@dimen/_7sdp" />
-
+        app:title="Self-Registration"/>
 
     <RelativeLayout
         android:layout_width="match_parent"

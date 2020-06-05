@@ -8,6 +8,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.widget.Toast;
@@ -57,6 +58,11 @@ public class AlarmReceiver extends BroadcastReceiver {
             mp = MediaPlayer.create(context, R.raw.alarm);
             if (!mp.isPlaying()) {
                 mp.start();
+                /*Intent newAppIntent;
+                PackageManager packageManager = context.getPackageManager();
+                newAppIntent = packageManager.getLaunchIntentForPackage("com.myapp.nfcapplication");
+                newAppIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+                context.startActivity(newAppIntent);*/
             }
 
             // mp.stop();
@@ -82,7 +88,9 @@ public class AlarmReceiver extends BroadcastReceiver {
             editor.putInt(KeyValues.VIOLATION_VALUE, violationValue + 1);
             editor.apply();
 
-            Toast.makeText(context, "ALram", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Please scan NFC/QRCode", Toast.LENGTH_SHORT).show();
+
+
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 NotificationChannel serviceChannel = new NotificationChannel(

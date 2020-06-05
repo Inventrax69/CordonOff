@@ -56,10 +56,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieData;
@@ -79,6 +81,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.navigation.NavigationView;
 import com.google.gson.Gson;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
@@ -140,6 +143,9 @@ public class UserActivity extends AppCompatActivity implements OnMapReadyCallbac
     Toolbar toolBar;
     ActionBar actionBar;
 
+    DrawerFragment drawerFragment;
+    CardView cvsetLoc;
+
     private void startAlarm() {
 
         alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
@@ -182,6 +188,7 @@ public class UserActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         scanQrCode = findViewById(R.id.scanQrCode);
         setLocation = findViewById(R.id.setLocation);
+        cvsetLoc = findViewById(R.id.cvsetLoc);
         scanNFCTag = findViewById(R.id.scanNFCTag);
 
         cartviewNFCScan = findViewById(R.id.cartviewNFCScan);
@@ -205,6 +212,10 @@ public class UserActivity extends AppCompatActivity implements OnMapReadyCallbac
         setSupportActionBar(toolBar);
 
         actionBar = getSupportActionBar();
+
+        drawerFragment = (DrawerFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
+        drawerFragment.setUp(R.id.fragment_navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), toolBar);
+        //drawerFragment.setDrawerListener(this);
 
 
         prefs = getSharedPreferences("CordonOff", MODE_PRIVATE);
@@ -330,12 +341,14 @@ public class UserActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         if (isHomeQuarantine == 0) {
             setLocation.setVisibility(View.VISIBLE);
+            cvsetLoc.setVisibility(View.VISIBLE);
             mapFragment.getView().setVisibility(View.GONE);
         } else {
             mapFragment.getView().setVisibility(View.VISIBLE);
             setLocation.setVisibility(View.GONE);
-            txtLat.setText(homeLat);
-            txtLong.setText(homeLong);
+            cvsetLoc.setVisibility(View.GONE);
+            txtLat.setText("Lat: "+" "+homeLat);
+            txtLong.setText("Long: "+" "+homeLong);
             if (myAddress.isEmpty()) {
                 getAddress(Double.parseDouble(homeLat), Double.parseDouble(homeLong));
             } else {
@@ -352,6 +365,7 @@ public class UserActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         if (getDaysDiff(currentTime, date) <= 2) {
             setLocation.setVisibility(View.VISIBLE);
+            cvsetLoc.setVisibility(View.VISIBLE);
         }
 
 
@@ -949,6 +963,7 @@ public class UserActivity extends AppCompatActivity implements OnMapReadyCallbac
                         editor.apply();
                         mapFragment.getView().setVisibility(View.VISIBLE);
                         setLocation.setVisibility(View.GONE);
+                        cvsetLoc.setVisibility(View.GONE);
                         txtLat.setText("" + latitude);
                         txtLong.setText("" + longitude);
                         String myAddress = city + " , " + state + " , " + zip;
@@ -961,6 +976,7 @@ public class UserActivity extends AppCompatActivity implements OnMapReadyCallbac
                         mapFragment.getMapAsync(UserActivity.this);
                         if (getDaysDiff(currentTime, date) <= 2) {
                             setLocation.setVisibility(View.VISIBLE);
+                            cvsetLoc.setVisibility(View.VISIBLE);
                         }
                     }
 
@@ -1267,8 +1283,9 @@ public class UserActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public void onMapReady(GoogleMap googleMap) {
         if (isHomeQuarantine == 1) {
-            double lat = Double.parseDouble(txtLat.getText().toString());
-            double lang = Double.parseDouble(txtLong.getText().toString());
+
+            double lat = Double.parseDouble(txtLat.getText().toString().split(":")[1]);
+            double lang = Double.parseDouble(txtLong.getText().toString().split(":")[1]);
 
             googleMap.addMarker(new MarkerOptions()
                     .position(new LatLng(lat, lang))

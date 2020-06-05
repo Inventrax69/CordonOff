@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
@@ -61,6 +62,8 @@ public class DrawerFragment extends Fragment implements View.OnClickListener {
         return layout;
     }
 
+
+
     public void loadFormControls() {
 
         fText = (ImageView) layout.findViewById(R.id.fText);
@@ -104,7 +107,45 @@ public class DrawerFragment extends Fragment implements View.OnClickListener {
     }
 
 
+    public void setUp(int fragmentId, DrawerLayout drawerLayout, final Toolbar toolbar) {
 
+        try {
+            containerView = getActivity().findViewById(fragmentId);
+            mDrawerLayout = drawerLayout;
+            mDrawerToggle = new ActionBarDrawerToggle(getActivity(), drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
+                @Override
+                public void onDrawerOpened(View drawerView) {
+                    super.onDrawerOpened(drawerView);
+                    getActivity().invalidateOptionsMenu();
+                }
+
+                @Override
+                public void onDrawerClosed(View drawerView) {
+                    super.onDrawerClosed(drawerView);
+                    getActivity().invalidateOptionsMenu();
+                }
+
+                @Override
+                public void onDrawerSlide(View drawerView, float slideOffset) {
+                    super.onDrawerSlide(drawerView, slideOffset);
+                    toolbar.setAlpha(1 - slideOffset / 2);
+                }
+            };
+
+
+            mDrawerLayout.setDrawerListener(mDrawerToggle);
+            mDrawerLayout.post(new Runnable() {
+                @Override
+                public void run() {
+                    mDrawerToggle.syncState();
+                }
+            });
+        } catch (Exception ex) {
+            // Logger.Log(DrawerFragment.class.getName(),ex);
+            return;
+        }
+
+    }
 
     @Override
     public void onClick(View v) {

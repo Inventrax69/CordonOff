@@ -13,15 +13,7 @@
         android:layout_height="wrap_content"
         android:background="@color/app_color"
         app:titleTextColor="@color/white"
-        app:title="Cordonoff"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Tag activation"
-        android:textColor="@color/white"
-        android:background="@color/app_color"
-        android:textSize="@dimen/_15sdp"
-        android:padding="@dimen/_7sdp" />
+        app:title="Tag activation"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -62,6 +54,7 @@
                         android:padding="@dimen/_3sdp">
 
                         <EditText
+
                             android:id="@+id/etAadharNumberPassport"
                             android:layout_width="0dp"
                             android:layout_height="@dimen/_35sdp"
@@ -72,18 +65,20 @@
                             android:maxLength="12"
                             android:maxLines="1"
                             android:padding="@dimen/_5sdp"
-                            android:layout_weight="0.87"/>
+                            android:layout_weight="0.75"/>
 
-                        <ImageView
-                            android:id="@+id/ivSearch"
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btnSearch"
                             android:layout_width="0dp"
-                            android:layout_height="match_parent"
+                            android:layout_height="@dimen/_32sdp"
                             android:layout_gravity="center"
-                            android:src="@drawable/ic_search"
-                            android:rotation="80"
+                            android:text="Search"
+                            android:drawableLeft="@drawable/ic_search"
                             android:padding="@dimen/_2sdp"
-                            android:layout_weight="0.13"
-                            android:alpha="0.6"/>
+                            android:textAllCaps="false"
+                            android:drawableTint="@color/white"
+                            android:layout_weight="0.25"
+                            style="@style/ButtonStyle" />
 
                     </LinearLayout>
 
@@ -239,7 +234,7 @@
 
                             <TextView
                                 android:id="@+id/txtScanQRCode"
-                                android:text="Scan QR Code"
+                                android:text="Map QR Code"
                                 android:padding="@dimen/_2sdp"
                                 android:layout_gravity="center"
                                 android:gravity="center"

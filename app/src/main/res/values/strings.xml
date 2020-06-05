@@ -10,6 +10,9 @@
     <string name="hint_message">Message</string>
     <string name="full_name">Full Name*</string>
 
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
     <string-array name="india_states">
         <item>Andaman and Nicobar Islands</item>
         <item>Andhra Pradesh</item>
