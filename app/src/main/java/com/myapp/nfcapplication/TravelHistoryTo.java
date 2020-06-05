@@ -104,7 +104,10 @@ public class TravelHistoryTo extends AppCompatActivity {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!stateDropDown.getText().toString().isEmpty() || !cityDropDown.getText().toString().isEmpty()|| !etPinCodeTravelHistory.getText().toString().isEmpty() || !etPhoneTwo.getText().toString().isEmpty() || !addressTravelHistory.getText().toString().isEmpty())
                 submitTravelHistory();
+                else
+                    Toast.makeText(TravelHistoryTo.this, "Please enter all the details", Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -28,6 +28,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
 import com.myapp.nfcapplication.Interface.ApiInterface;
 import com.myapp.nfcapplication.Pojo.CustomerRegistration;
@@ -51,6 +52,7 @@ public class TravelHistoryFrom extends AppCompatActivity {
     TextView txtData;
     TextInputEditText addressTravelHistory, etPinCodeTravelHistory;
     AutoCompleteTextView countryDropDown, stateDropDown, cityDropDown;
+    TextInputLayout txtInptCity;
     Button btnClear, btnSave;
 
     // FusedLocationProviderClient mFusedLocationClient;
@@ -58,7 +60,7 @@ public class TravelHistoryFrom extends AppCompatActivity {
     private ArrayAdapter<String> adapterCities;
     private ArrayAdapter<String> adapterCountries;
 
-    String selectedCountry = "",selectedState = "";
+    String selectedCountry = "", selectedState = "";
 
     Dialog dialog;
 
@@ -94,12 +96,13 @@ public class TravelHistoryFrom extends AppCompatActivity {
         addressTravelHistory = (TextInputEditText) findViewById(R.id.addressTravelHistory);
         etPinCodeTravelHistory = (TextInputEditText) findViewById(R.id.etPinCodeTravelHistory);
 
+        txtInptCity = (TextInputLayout) findViewById(R.id.txtInptCity);
+
+
         btnClear = (Button) findViewById(R.id.btnClear);
         btnSave = (Button) findViewById(R.id.btnSave);
 
         stateDropDown.setEnabled(false);
-        cityDropDown.setEnabled(false);
-
 
         gson = new Gson();
         customerID = getIntent().getIntExtra(KeyValues.CUSTOMERID, 0);
@@ -108,7 +111,10 @@ public class TravelHistoryFrom extends AppCompatActivity {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                submitTravelHistory();
+                if (!countryDropDown.getText().toString().isEmpty() || !stateDropDown.getText().toString().isEmpty() || !addressTravelHistory.getText().toString().isEmpty() || !etPinCodeTravelHistory.getText().toString().isEmpty())
+                    submitTravelHistory();
+                else
+                    Toast.makeText(TravelHistoryFrom.this, "Please enter all the details", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -123,7 +129,7 @@ public class TravelHistoryFrom extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                if(!countryDropDown.getAdapter().getItem(position).toString().equalsIgnoreCase("Select")) {
+                if (!countryDropDown.getAdapter().getItem(position).toString().equalsIgnoreCase("Select")) {
                     selectedCountry = countryDropDown.getAdapter().getItem(position).toString();
                     stateDropDown.setEnabled(true);
                     GetStatesbasedonCountry(selectedCountry);
@@ -138,12 +144,14 @@ public class TravelHistoryFrom extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                if(!stateDropDown.getAdapter().getItem(position).toString().equalsIgnoreCase("Select")) {
+                if (!stateDropDown.getAdapter().getItem(position).toString().equalsIgnoreCase("Select")) {
                     selectedState = stateDropDown.getAdapter().getItem(position).toString();
-                    if(selectedCountry.equalsIgnoreCase("India")){
-                        cityDropDown.setEnabled(true);
-                    }else {
-                        cityDropDown.setEnabled(false);
+                    if (selectedCountry.equalsIgnoreCase("India")) {
+                        cityDropDown.setVisibility(View.VISIBLE);
+                        txtInptCity.setVisibility(View.VISIBLE);
+                    } else {
+                        cityDropDown.setVisibility(View.GONE);
+                        txtInptCity.setVisibility(View.GONE);
                     }
 
                     GetCitybasedonState(selectedState);
@@ -168,7 +176,9 @@ public class TravelHistoryFrom extends AppCompatActivity {
 
         customerRegistrationDto.setAddressLine1(addressTravelHistory.getText().toString());
         customerRegistrationDto.setPinCode(etPinCodeTravelHistory.getText().toString());
-        customerRegistrationDto.setCity(cityDropDown.getText().toString());
+        if (!cityDropDown.getText().toString().isEmpty()) {
+            customerRegistrationDto.setCity(cityDropDown.getText().toString());
+        }
         customerRegistrationDto.setState(stateDropDown.getText().toString());
         customerRegistrationDto.setCountry(countryDropDown.getText().toString());
         customerRegistrationDto.setCustomerID(customerID);
@@ -188,28 +198,29 @@ public class TravelHistoryFrom extends AppCompatActivity {
                     customerRegistrationDto = new Gson().fromJson(response.body(), CustomerRegistration.class);
                     if (customerRegistrationDto.getIsRegistrationCompleted() != 0) {
                         dialog.dismiss();
-                        MaterialDialogUtils.showUploadSuccessDialog(TravelHistoryFrom.this, "Uploaded");
+                        //MaterialDialogUtils.showUploadSuccessDialog(TravelHistoryFrom.this, "Uploaded");
                         clearTravelHistory();
 
                         dialogRes = new Dialog(TravelHistoryFrom.this);
                         dialogRes.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                        dialogRes.setCancelable(true);
+                        dialogRes.setCancelable(false);
                         dialogRes.setTitle("User Settings");
                         dialogRes.setContentView(R.layout.dialog_res);
                         dialogRes.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                         dialogRes.show();
 
 
-                        Button btnOK=dialogRes.findViewById(R.id.btnOK);
+                        TextView btnOK=dialogRes.findViewById(R.id.btnOK);
                         btnOK.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
+                                dialogRes.dismiss();
                                 Intent intent = new Intent(TravelHistoryFrom.this, UserLoginActivity.class);
                                 //intent.putExtra("details", customerRegistrationDto);
                                 startActivity(intent);
                                 finish();
 
-                                Toast.makeText(TravelHistoryFrom.this, "Registration completed", Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(TravelHistoryFrom.this, "Registration completed", Toast.LENGTH_SHORT).show();
                             }
                         });
 
@@ -388,13 +399,13 @@ public class TravelHistoryFrom extends AppCompatActivity {
 
 
     public void clearTravelHistory() {
-        countryDropDown.setText("India");
-        countryDropDown.setEnabled(false);
+        countryDropDown.setAdapter(adapterCountries);
 
-        stateDropDown.setText("Andhra Pradesh");
-        stateDropDown.setEnabled(false);
+        stateDropDown.setAdapter(adapterStates);
 
         cityDropDown.setAdapter(adapterCities);
+        cityDropDown.setVisibility(View.GONE);
+        txtInptCity.setVisibility(View.VISIBLE);
         addressTravelHistory.setText("");
         etPinCodeTravelHistory.setText("");
     }

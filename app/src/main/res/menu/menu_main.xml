@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<!--    <item
+        android:id="@+id/action_home"
+        android:icon="@drawable/ic_qr_code"
+        android:orderInCategory="100"
+        android:title=""
+        android:visible="true"
+        app:showAsAction="ifRoom" />-->
+
+
+   <!-- <item
+        android:id="@+id/action_profile"
+        android:orderInCategory="100"
+        android:title="@string/action_profile"
+        app:showAsAction="never" />
+-->
+
+    <item
+        android:id="@+id/action_sync_info"
+        android:icon="@drawable/ic_refresh"
+        android:orderInCategory="100"
+        android:title="Sync"
+        android:visible="true"
+        app:showAsAction="ifRoom" />
+
+
+
+    <item
+        android:id="@+id/action_multilang"
+        android:icon="@drawable/ic_languages"
+        android:orderInCategory="100"
+        android:title="Settings"
+        android:visible="true"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_options"
+        android:orderInCategory="100"
+        android:title="More options"
+        app:showAsAction="never" />
+
+
+
+</menu>

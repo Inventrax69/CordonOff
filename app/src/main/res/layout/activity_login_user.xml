@@ -42,7 +42,6 @@
             android:layout_height="@dimen/_35sdp"
             android:layout_margin="@dimen/_5sdp"
             android:background="@drawable/bg_stroke"
-            android:drawableRight="@drawable/ic_aadhar_card_black_24dp"
             android:drawableTint="@color/app_color"
             android:hint="Enter Aadhar/Passport Number"
             android:inputType="textPersonName"
@@ -89,7 +88,7 @@
             android:padding="@dimen/_5sdp"
             android:textSize="@dimen/_13sdp"
 
-            android:text="Proceed"
+            android:text="Proceed to Login"
             android:textAllCaps="false"
             android:textColor="@android:color/white" />
         

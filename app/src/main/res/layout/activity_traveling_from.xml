@@ -34,7 +34,6 @@
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/travellingTo"
             android:scrollbars="vertical">
 
             <LinearLayout
@@ -90,11 +89,13 @@
 
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/txtInptCity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_2sdp"
                     android:hint="City"
                     android:padding="@dimen/_2sdp"
+                    android:visibility="gone"
                     app:endIconDrawable="@drawable/ic_keyboard_arrow_down_black_24dp">
 
                     <AutoCompleteTextView
@@ -105,7 +106,8 @@
                         android:drawableEnd="@drawable/ic_keyboard_arrow_down_black_24dp"
                         android:drawableRight="@drawable/ic_keyboard_arrow_down_black_24dp"
                         android:drawablePadding="@dimen/_2sdp"
-                        android:padding="@dimen/_2sdp">
+                        android:padding="@dimen/_2sdp"
+                        >
 
                     </AutoCompleteTextView>
 

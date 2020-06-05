@@ -8,6 +8,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.PendingIntent;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
@@ -22,6 +23,7 @@ import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.Network;
 import android.net.NetworkCapabilities;
+import android.net.NetworkInfo;
 import android.nfc.FormatException;
 import android.nfc.NdefMessage;
 import android.nfc.NfcAdapter;
@@ -36,6 +38,8 @@ import android.os.Parcelable;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -48,13 +52,14 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieData;
@@ -81,6 +86,7 @@ import com.myapp.nfcapplication.Interface.ApiInterface;
 import com.myapp.nfcapplication.Pojo.CustomerRegistration;
 
 import java.io.IOException;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -104,7 +110,7 @@ public class UserActivity extends AppCompatActivity implements OnMapReadyCallbac
     TextView txtData, txtLat, txtLong, txtMyLocation, txtLastUpdate, txtRegDate, txtCDaysPending,
             txtViolationsRecorded, scanNFCTag, txtUserName, txtPhoneNumber, tvQuarentineRange;
     TextView scanQrCode;
-    Button setLocation;
+    TextView setLocation;
     int PERMISSION_ID = 44;
     FusedLocationProviderClient mFusedLocationClient;
     String address, city, state, zip, country;
@@ -130,9 +136,9 @@ public class UserActivity extends AppCompatActivity implements OnMapReadyCallbac
     Button btnLogOut, btnClose, btnSave;
     EditText etDistanceInMeters, etTimeInMinutes;
     LinearLayout linearDialog;
-    private DrawerFragment drawerFragment;
-    boolean mSlideState=false;
-    DrawerLayout  drawerLayout;
+
+    Toolbar toolBar;
+    ActionBar actionBar;
 
     private void startAlarm() {
 
@@ -193,6 +199,13 @@ public class UserActivity extends AppCompatActivity implements OnMapReadyCallbac
                 qrScan.initiateScan();
             }
         });
+
+        toolBar = findViewById(R.id.toolBar);
+
+        setSupportActionBar(toolBar);
+
+        actionBar = getSupportActionBar();
+
 
         prefs = getSharedPreferences("CordonOff", MODE_PRIVATE);
         isHomeQuarantine = prefs.getInt(KeyValues.IS_HOME_QUARANTINE, 0);
@@ -351,50 +364,9 @@ public class UserActivity extends AppCompatActivity implements OnMapReadyCallbac
         btnlocation = findViewById(R.id.btnlocation);
         linearDialog = findViewById(R.id.linearDialog);
 
-        drawerFragment = (DrawerFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
+        TextDrawable drawable = TextDrawable.builder().buildRound(txtUserName.getText().toString().substring(0, 1), Color.parseColor("#FFFFFF"));
 
-        drawerLayout=(DrawerLayout)findViewById(R.id.drawer_layout);
-
-        drawerLayout.setDrawerListener(new ActionBarDrawerToggle(UserActivity.this,
-                drawerLayout,
-                0,
-                0){
-            @Override
-            public void onDrawerClosed(View drawerView) {
-                super.onDrawerClosed(drawerView);
-                mSlideState=false;//is Closed
-            }
-            @Override
-            public void onDrawerOpened(View drawerView) {
-                super.onDrawerOpened(drawerView);
-                mSlideState=true;//is Opened
-            }});
-
-        fText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clickEventSlide();
-            }
-        });
-
-
-
-/*
-        fText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // If the navigation drawer is not open then open it, if its already open then close it.
-                if(!drawerLayout.isDrawerOpen(Gravity.START))
-                    drawerLayout.openDrawer(Gravity.START);
-                else
-                    drawerLayout.closeDrawer(mDrawerLayout);
-            }
-        });*/
-
-
-/*        TextDrawable drawable = TextDrawable.builder().buildRound(txtUserName.getText().toString().substring(0, 1), Color.parseColor("#FFFFFF"));
-
-        fText.setImageDrawable(drawable);*/
+        fText.setImageDrawable(drawable);
 
 
         int isBandActive = prefs.getInt(KeyValues.IS_BAND_ACTIVE, 0);
@@ -546,7 +518,7 @@ public class UserActivity extends AppCompatActivity implements OnMapReadyCallbac
 
             Toast.makeText(this, "NFC not supported", Toast.LENGTH_SHORT).show();
             //initiating the qr code scan
-            qrScan.initiateScan();
+            //qrScan.initiateScan();
 
         } else if (!mNfcAdapter.isEnabled()) {
             Intent intent;
@@ -562,13 +534,103 @@ public class UserActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     }
 
-    public void clickEventSlide(){
-        if(mSlideState){
-            drawerLayout.closeDrawer(Gravity.START);
-        }else{
-            drawerLayout.openDrawer(Gravity.START);
-        }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        switch (id) {
+
+            case R.id.action_sync_info:
+
+                //Toast.makeText(this, "sync", Toast.LENGTH_SHORT).show();
+
+                getDetails();
+                break;
+
+            case R.id.action_options:
+                dialogUserSetting = new Dialog(UserActivity.this);
+                dialogUserSetting.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                dialogUserSetting.setCancelable(true);
+                dialogUserSetting.setTitle("User Settings");
+                dialogUserSetting.setContentView(R.layout.dialog_config);
+                dialogUserSetting.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialogUserSetting.show();
+
+                btnLogOut = dialogUserSetting.findViewById(R.id.btnLogOut);
+                btnClose = dialogUserSetting.findViewById(R.id.btnClose);
+                btnSave = dialogUserSetting.findViewById(R.id.btnSave);
+
+                etDistanceInMeters = dialogUserSetting.findViewById(R.id.etDistanceInMeters);
+                etTimeInMinutes = dialogUserSetting.findViewById(R.id.etTimeInMinutes);
+
+                btnLogOut.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialogUserSetting.dismiss();
+                        SharedPreferences.Editor editor = getSharedPreferences("CordonOff", MODE_PRIVATE).edit();
+                        editor.putInt(KeyValues.IS_LOGIN, 0);
+                        editor.apply();
+                        startActivity(new Intent(UserActivity.this, UserLoginActivity.class));
+                        finish();
+
+                    }
+                });
+
+                btnClose.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialogUserSetting.dismiss();
+                    }
+                });
+
+                btnSave.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        if (!etTimeInMinutes.getText().toString().isEmpty() && !etDistanceInMeters.getText().toString().isEmpty()) {
+                            if (!etTimeInMinutes.getText().toString().equalsIgnoreCase("0") && !etDistanceInMeters.getText().toString().equalsIgnoreCase("0")) {
+                                dialogUserSetting.dismiss();
+                                tvQuarentineRange.setText(prefs.getInt(KeyValues.CONFIGURED_GEO_LOCATION, 50) + " Meters");
+                                SharedPreferences.Editor editor = getSharedPreferences("CordonOff", MODE_PRIVATE).edit();
+                                editor.putInt(KeyValues.CONFIGURED_GEO_LOCATION, Integer.parseInt(etDistanceInMeters.getText().toString()));
+                                editor.putInt(KeyValues.CONFIGURED_TIME, Integer.parseInt(etTimeInMinutes.getText().toString()));
+                                editor.apply();
+                            } else {
+                                Toast.makeText(UserActivity.this, "Please enter valid details.", Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            Toast.makeText(UserActivity.this, "Please enter details.", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                });
+
+                //Toast.makeText(this, "options", Toast.LENGTH_SHORT).show();
+                break;
+
+
+            case R.id.action_multilang:
+
+                Toast.makeText(this, "multi lang", Toast.LENGTH_SHORT).show();
+                break;
+
+
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 
     public static Boolean isLocationEnabled(Context context)
     {
@@ -617,6 +679,52 @@ public class UserActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
         return false;
     }
+
+    public void getDetails() {
+
+        setProgressDialog();
+
+        ApiInterface apiService = RestClient.getClient().create(ApiInterface.class);
+
+        CustomerRegistration customerRegistrationDto = new CustomerRegistration();
+
+        customerRegistrationDto.setAadharNumber(prefs.getString(KeyValues.AADHAR_NUMBER,""));
+
+        Call<String> call = null;
+        call = apiService.GETCustomerData(customerRegistrationDto);
+
+        call.enqueue(new Callback<String>() {
+
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+
+                CustomerRegistration customerDto;
+                progressDialog.dismiss();
+                if (response.body() != null) {
+
+                    customerDto = new Gson().fromJson(response.body(), CustomerRegistration.class);
+
+                    if(!customerDto.getQRCode().isEmpty() || customerDto.getIsMobileNFCEnabled()!=0) {
+
+                        txtViolationsRecorded.setText(customerDto.getVialotionCount()+"");
+
+                    }else {
+                        Toast.makeText(UserActivity.this, "Tag activation not yet done. Please do active tag.", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                progressDialog.dismiss();
+                Toast.makeText(UserActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
 
 
     public int getDaysDiff(Date datefrom, Date dateto) {

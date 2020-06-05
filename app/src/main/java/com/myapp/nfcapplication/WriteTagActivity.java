@@ -450,11 +450,11 @@ public class WriteTagActivity extends AppCompatActivity {
                 txtData.setTextColor(Color.green(R.color.green));
                 dialogNFCWrite.dismiss();
 
-                MaterialDialogUtils.showUploadSuccessDialog(WriteTagActivity.this, "Done");
+                MaterialDialogUtils.showUploadSuccessDialog(WriteTagActivity.this, "Activated");
 
             } catch (Exception e) {
                 dialogNFCWrite.dismiss();
-                Toast.makeText(this, "Failed writing to NFC, please try again.", Toast.LENGTH_SHORT).show();
+                MaterialDialogUtils.showUploadErrorDialog(WriteTagActivity.this, "Error");
                 //txtData.setText(getString(R.string.message_write_error));
             }
         } else {
