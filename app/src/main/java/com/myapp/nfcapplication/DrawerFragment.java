@@ -40,7 +40,7 @@ public class DrawerFragment extends Fragment implements View.OnClickListener {
     private IntentFilter mIntentFilter;
     private String userName = "";
     ImageView fText;
-    TextView txtUserName,txtPhoneNumber,txtRegDate,btnLogOut,tvAppVersion;
+    TextView txtUserName,txtPhoneNumber,txtRegDate,btnLogOut,tvAppVersion,txtLocation;
     SharedPreferences prefs;
 
 
@@ -70,6 +70,7 @@ public class DrawerFragment extends Fragment implements View.OnClickListener {
         txtUserName = (TextView) layout.findViewById(R.id.txtUserName);
         txtPhoneNumber = (TextView) layout.findViewById(R.id.txtPhoneNumber);
         txtRegDate = (TextView) layout.findViewById(R.id.txtRegDate);
+        txtLocation = (TextView) layout.findViewById(R.id.txtLocation);
 
         btnLogOut = (TextView) layout.findViewById(R.id.btnLogOut);
         tvAppVersion = (TextView) layout.findViewById(R.id.tvAppVersion);
@@ -78,6 +79,7 @@ public class DrawerFragment extends Fragment implements View.OnClickListener {
         txtUserName.setText(prefs.getString(KeyValues.NAME_OF_THE_PERSON, ""));
         txtPhoneNumber.setText(prefs.getString(KeyValues.MOBILE_ONE, ""));
         txtRegDate.setText(prefs.getString(KeyValues.CREATED_DATE, ""));
+        txtLocation.setText(prefs.getString(KeyValues.LATITUDE, "") + " , " +prefs.getString(KeyValues.LONGITUDE, ""));
 
         tvAppVersion.setText("" + BuildConfig.VERSION_NAME);
 

@@ -287,8 +287,8 @@ public class UserActivity extends AppCompatActivity implements OnMapReadyCallbac
         txtRegDate.setText(prefs.getString(KeyValues.CREATED_DATE, ""));
         // txtRegDate.setText("28-05-2020 12:00:00"); 5/28/2020 12:00:00 AM
         currentTime = Calendar.getInstance().getTime();
-        SimpleDateFormat formatIn = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss a");
-        // SimpleDateFormat formatIn = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
+        //SimpleDateFormat formatIn = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss a");
+         SimpleDateFormat formatIn = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
         try {
             date = formatIn.parse(txtRegDate.getText().toString());
             // txtCDaysPending.setText("" + (toNoOfdaysConfined - getDaysDiff(currentTime, date)) + " Days");

@@ -78,6 +78,9 @@ public class CustomerRegistration implements Serializable {
     @SerializedName("VialotionCount")
     private int VialotionCount;
 
+    @SerializedName("GeoVialotionCount")
+    private int GeoVialotionCount;
+
     @SerializedName("CreatedDate")
     private String CreatedDate;
 
@@ -338,5 +341,14 @@ public class CustomerRegistration implements Serializable {
 
     public void setGeoViolation(boolean geoViolation) {
         IsGeoViolation = geoViolation;
+    }
+
+
+    public int getGeoVialotionCount() {
+        return GeoVialotionCount;
+    }
+
+    public void setGeoVialotionCount(int geoVialotionCount) {
+        GeoVialotionCount = geoVialotionCount;
     }
 }
