@@ -174,7 +174,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:padding="@dimen/_5sdp"
+                    android:padding="@dimen/_3sdp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -214,7 +214,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:padding="@dimen/_10sdp"
+            android:paddingLeft="@dimen/_10sdp"
             android:orientation="vertical"
             android:layout_marginRight="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_10sdp"
@@ -226,8 +226,8 @@
             <TextView
                 android:id="@+id/btnHome"
                 android:textSize="@dimen/_14sdp"
-                android:paddingTop="@dimen/_8sdp"
-                android:paddingBottom="@dimen/_8sdp"
+                android:paddingTop="@dimen/_5sdp"
+                android:paddingBottom="@dimen/_5sdp"
                 android:fontFamily="@font/nunito_semibold"
                 android:textColor="@color/white"
                 android:layout_gravity="center"
@@ -238,8 +238,8 @@
             <TextView
                 android:id="@+id/btnAbout"
                 android:textSize="@dimen/_14sdp"
-                android:paddingTop="@dimen/_8sdp"
-                android:paddingBottom="@dimen/_8sdp"
+                android:paddingTop="@dimen/_5sdp"
+                android:paddingBottom="@dimen/_5sdp"
                 android:fontFamily="@font/nunito_semibold"
                 android:textColor="@color/white"
                 android:layout_gravity="center"
@@ -250,8 +250,8 @@
             <TextView
                 android:id="@+id/btnAboutSelf"
                 android:textSize="@dimen/_14sdp"
-                android:paddingTop="@dimen/_8sdp"
-                android:paddingBottom="@dimen/_8sdp"
+                android:paddingTop="@dimen/_5sdp"
+                android:paddingBottom="@dimen/_5sdp"
                 android:fontFamily="@font/nunito_semibold"
                 android:textColor="@color/white"
                 android:layout_gravity="center"
@@ -262,8 +262,8 @@
             <TextView
                 android:id="@+id/btnFAQ"
                 android:textSize="@dimen/_14sdp"
-                android:paddingTop="@dimen/_8sdp"
-                android:paddingBottom="@dimen/_8sdp"
+                android:paddingTop="@dimen/_5sdp"
+                android:paddingBottom="@dimen/_5sdp"
                 android:fontFamily="@font/nunito_semibold"
                 android:textColor="@color/white"
                 android:layout_gravity="center"
@@ -274,8 +274,8 @@
             <TextView
                 android:id="@+id/btnPrivacyPolicy"
                 android:textSize="@dimen/_14sdp"
-                android:paddingTop="@dimen/_8sdp"
-                android:paddingBottom="@dimen/_8sdp"
+                android:paddingTop="@dimen/_5sdp"
+                android:paddingBottom="@dimen/_5sdp"
                 android:fontFamily="@font/nunito_semibold"
                 android:textColor="@color/white"
                 android:layout_gravity="center"
@@ -286,8 +286,8 @@
             <TextView
                 android:id="@+id/btnTandC"
                 android:textSize="@dimen/_14sdp"
-                android:paddingTop="@dimen/_8sdp"
-                android:paddingBottom="@dimen/_8sdp"
+                android:paddingTop="@dimen/_5sdp"
+                android:paddingBottom="@dimen/_5sdp"
                 android:fontFamily="@font/nunito_semibold"
                 android:textColor="@color/white"
                 android:layout_gravity="center"
@@ -320,21 +320,22 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/btnLogOut"
                 android:textSize="@dimen/_16sdp"
                 android:textStyle="bold"
                 android:textColor="@color/white"
                 android:layout_gravity="center"
                 android:text="Log Out "
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:padding="@dimen/_10sdp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:weightSum="4">
 
             <TextView
                 android:id="@+id/lblAppVersion"
@@ -352,6 +353,22 @@
                 android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="DummyView"
+                android:visibility="invisible"/>
+
+            <TextView
+                android:id="@+id/btnLogOut"
+                android:textColor="@color/white"
+                android:layout_gravity="right"
+                android:background="@drawable/ic_switch"
+                android:backgroundTint="@color/white"
+                android:gravity="right"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp" />
 
         </LinearLayout>
 

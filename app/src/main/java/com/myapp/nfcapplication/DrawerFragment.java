@@ -4,6 +4,7 @@ package com.myapp.nfcapplication;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -42,7 +43,7 @@ public class DrawerFragment extends Fragment implements View.OnClickListener {
     private IntentFilter mIntentFilter;
     private String userName = "";
     ImageView fText, fClose;
-    TextView txtUserName, txtPhoneNumber, txtRegDate, btnLogOut, tvAppVersion, txtLocation, btnHome, btnAbout;
+    TextView txtUserName, txtPhoneNumber, txtRegDate, btnLogOut, tvAppVersion, txtLocation, btnHome, btnAbout,btnAboutSelf,btnTandC;
     SharedPreferences prefs;
     RelativeLayout relMap;
 
@@ -77,6 +78,8 @@ public class DrawerFragment extends Fragment implements View.OnClickListener {
 
         btnHome = (TextView) layout.findViewById(R.id.btnHome);
         btnAbout = (TextView) layout.findViewById(R.id.btnAbout);
+        btnAboutSelf = (TextView) layout.findViewById(R.id.btnAboutSelf);
+        btnTandC = (TextView) layout.findViewById(R.id.btnTandC);
 
         btnLogOut = (TextView) layout.findViewById(R.id.btnLogOut);
         tvAppVersion = (TextView) layout.findViewById(R.id.tvAppVersion);
@@ -123,6 +126,24 @@ public class DrawerFragment extends Fragment implements View.OnClickListener {
 
             }
         });
+
+        if (getActivity() instanceof UserActivity) {
+            btnHome.setBackground(getResources().getDrawable(R.drawable.item_pressed_background));
+        }
+        if (getActivity() instanceof AboutCovidActivity) {
+           /* btnAbout.setTextColor(Color.parseColor("#FF373D59"));
+            btnAbout.setBackgroundColor(Color.parseColor("#FFFFFF"));*/
+            btnAbout.setBackground(getResources().getDrawable(R.drawable.item_pressed_background));
+        }
+        if (getActivity() instanceof AboutQuartineActivity) {
+            btnAboutSelf.setTextColor(Color.parseColor("#FF373D59"));
+            btnAboutSelf.setBackgroundColor(Color.parseColor("#FFFFFF"));
+        }
+        if (getActivity() instanceof TermsAndConditionActivity) {
+            btnTandC.setTextColor(Color.parseColor("#FF373D59"));
+            btnTandC.setBackgroundColor(Color.parseColor("#FFFFFF"));;
+        }
+
 
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override

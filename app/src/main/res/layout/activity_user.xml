@@ -15,6 +15,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:weightSum="20"
             android:orientation="vertical"
             tools:context=".UserActivity">
 
@@ -26,711 +27,812 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
+                android:layout_weight="1"
                 app:title="Cordonoff"
                 app:titleTextColor="@color/black" />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="19"
+                android:weightSum="20"
+                android:orientation="vertical">
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="9"
+                    android:textColor="@color/white"
                     android:orientation="vertical">
 
-                    <LinearLayout
+                    <TextView
+                        android:id="@+id/txtData"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:padding="@dimen/_2sdp"
                         android:textColor="@color/white"
-                        android:orientation="vertical">
+                        android:textSize="@dimen/_16sdp"
+                        android:visibility="gone" />
 
-                        <TextView
-                            android:id="@+id/txtData"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:padding="@dimen/_2sdp"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/_16sdp"
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="3.4">
+
+                        <ImageView
+                            android:id="@+id/fText"
+                            android:layout_width="@dimen/_50sdp"
+                            android:layout_height="@dimen/_50sdp"
+                            android:layout_gravity="center"
+                            android:padding="@dimen/_10sdp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/ic_menu_black_24dp"
                             android:visibility="gone" />
 
-
-                        <RelativeLayout
+                        <LinearLayout
+                            android:id="@+id/llImage"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/_10sdp"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
 
-                            <ImageView
-                                android:id="@+id/fText"
-                                android:layout_width="@dimen/_50sdp"
-                                android:layout_height="@dimen/_50sdp"
-                                android:layout_gravity="center"
-                                android:padding="@dimen/_10sdp"
-                                android:scaleType="fitXY"
-                                android:src="@drawable/ic_menu_black_24dp"
-                                android:visibility="gone" />
 
                             <LinearLayout
-                                android:id="@+id/llImage"
+                                android:id="@+id/linearDialog"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginBottom="@dimen/_10sdp"
-                                android:orientation="horizontal"
-                                android:weightSum="2">
+                                android:layout_weight="1"
+                                android:orientation="vertical"
+                                android:padding="@dimen/_5sdp"
+                                android:visibility="gone">
 
-
-                                <LinearLayout
-                                    android:id="@+id/linearDialog"
+                                <TextView
+                                    android:id="@+id/txtUserName"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:orientation="vertical"
-                                    android:padding="@dimen/_5sdp"
-                                    android:visibility="gone">
+                                    android:ellipsize="end"
+                                    android:padding="@dimen/_1sdp"
+                                    android:text="Anil"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/_14sdp"
+                                    android:textStyle="normal" />
 
-                                    <TextView
-                                        android:id="@+id/txtUserName"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:ellipsize="end"
-                                        android:padding="@dimen/_1sdp"
-                                        android:text="Anil"
-                                        android:textColor="@color/white"
-                                        android:textSize="@dimen/_14sdp"
-                                        android:textStyle="normal" />
-
-                                    <TextView
-                                        android:id="@+id/txtPhoneNumber"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:padding="@dimen/_1sdp"
-                                        android:text="Phone Number"
-                                        android:textColor="@color/white"
-                                        android:textSize="@dimen/_10sdp"
-                                        android:textStyle="normal" />
-
-                                </LinearLayout>
-
-                                <LinearLayout
+                                <TextView
+                                    android:id="@+id/txtPhoneNumber"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:orientation="vertical"
-                                    android:padding="@dimen/_5sdp"
-                                    android:visibility="gone">
-
-                                    <TextView
-                                        android:id="@+id/lblRegDate"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_gravity="right|end"
-                                        android:gravity="right|end"
-                                        android:padding="@dimen/_1sdp"
-                                        android:text="Register Date "
-                                        android:textColor="@color/white"
-                                        android:textSize="@dimen/_14sdp"
-                                        android:textStyle="normal" />
-
-                                    <TextView
-                                        android:id="@+id/txtRegDate"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_gravity="right|end"
-                                        android:gravity="right|end"
-                                        android:padding="@dimen/_2sdp"
-                                        android:textColor="@color/white"
-                                        android:textSize="@dimen/_10sdp"
-                                        android:textStyle="" />
-
-                                </LinearLayout>
+                                    android:padding="@dimen/_1sdp"
+                                    android:text="Phone Number"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/_10sdp"
+                                    android:textStyle="normal" />
 
                             </LinearLayout>
 
-                            <com.github.mikephil.charting.charts.PieChart
-                                android:id="@+id/piechart"
-                                android:visibility="gone"
-                                android:layout_width="@dimen/_140sdp"
-                                android:layout_height="@dimen/_140sdp"
-                                android:layout_below="@+id/llImage"
-                                android:layout_centerInParent="true"
-                                android:layout_margin="@dimen/_5sdp"
-                                android:padding="@dimen/_10sdp" />
-
-                            <RelativeLayout
-                                android:weightSum="10"
-                                android:orientation="horizontal"
-                                android:layout_width="wrap_content"
-                                android:layout_height="@dimen/_170sdp">
-
-
-                                <LinearLayout
-                                    android:layout_alignParentStart="true"
-                                    android:layout_alignParentLeft="true"
-                                    android:layout_width="wrap_content"
-                                    android:paddingStart="@dimen/_15sdp"
-                                    android:paddingLeft="@dimen/_15sdp"
-                                    android:layout_height="@dimen/_170sdp">
-
-                                    <ImageView
-                                        android:id="@+id/ivQrCode"
-                                        android:src="@drawable/ic_qr1"
-                                        android:layout_gravity="bottom"
-                                        android:elevation="@dimen/_10sdp"
-                                        android:layout_width="@dimen/_36sdp"
-                                        android:layout_height="@dimen/_36sdp" />
-
-                                </LinearLayout>
-
-                                <com.github.lzyzsd.circleprogress.ArcProgress
-                                    android:id="@+id/arc_progress"
-                                    android:layout_centerInParent="true"
-                                    android:layout_width="@dimen/_170sdp"
-                                    android:layout_height="@dimen/_170sdp"
-                                    app:arc_max="14"
-                                    app:arc_suffix_text=""
-                                    app:arc_text_color="#213caf"
-                                    app:arc_text_size="@dimen/_60sdp"
-                                    app:arc_finished_color="#02a3c1"
-                                    app:arc_unfinished_color="#213caf"
-                                    app:arc_stroke_width="@dimen/_15sdp"
-                                    android:layout_margin="@dimen/_5sdp"
-                                    android:padding="@dimen/_20sdp"
-                                    app:arc_bottom_text_size="@dimen/_13sdp"
-                                    app:arc_bottom_text="DAYS LEFT"/>
-
-                                <LinearLayout
-                                    android:layout_alignParentRight="true"
-                                    android:layout_alignParentEnd="true"
-                                    android:layout_width="wrap_content"
-                                    android:paddingRight="@dimen/_15sdp"
-                                    android:paddingEnd="@dimen/_15sdp"
-                                    android:layout_height="@dimen/_170sdp">
-
-                                    <ImageView
-                                        android:id="@+id/ivSetlocation"
-                                        android:layout_gravity="bottom"
-                                        android:elevation="@dimen/_10sdp"
-                                        android:src="@drawable/ic_setlocation1"
-                                        android:layout_width="@dimen/_36sdp"
-                                        android:layout_height="@dimen/_36sdp" />
-
-                                </LinearLayout>
-
-                            </RelativeLayout>
-
-                        </RelativeLayout>
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:padding="@dimen/_2sdp"
-                            android:visibility="visible">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:ellipsize="end"
-                                android:layout_gravity="center"
-                                android:gravity="center"
-                                android:paddingStart="@dimen/_10sdp"
-                                android:paddingLeft="@dimen/_10sdp"
-                                android:text="Scan \n  QR Code"
-                                android:layout_alignParentLeft="true"
-                                android:layout_alignParentStart="true"
-                                android:fontFamily="@font/nunito_semibold"
-                                android:padding="@dimen/_1sdp"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/_10sdp"
-                                android:textStyle="normal" />
-
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:ellipsize="end"
-                                android:layout_alignParentRight="true"
-                                android:layout_alignParentEnd="true"
-                                android:layout_gravity="center"
-                                android:gravity="center"
-                                android:paddingEnd="@dimen/_10sdp"
-                                android:paddingRight="@dimen/_10sdp"
-                                android:text="Set \n Location"
-                                android:fontFamily="@font/nunito_semibold"
-                                android:padding="@dimen/_1sdp"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/_10sdp"
-                                android:textStyle="normal" />
-
-
-                        </RelativeLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:padding="@dimen/_5sdp"
-                            android:visibility="visible">
-
-                            <TextView
+                            <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:ellipsize="end"
-                                android:layout_gravity="center"
-                                android:gravity="center"
-                                android:fontFamily="@font/nunito_semibold"
-                                android:padding="@dimen/_1sdp"
-                                android:text="My Quarantine Period"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/_16sdp"
-                                android:textStyle="normal" />
+                                android:layout_weight="1"
+                                android:orientation="vertical"
+                                android:padding="@dimen/_5sdp"
+                                android:visibility="gone">
 
+                                <TextView
+                                    android:id="@+id/lblRegDate"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="right|end"
+                                    android:gravity="right|end"
+                                    android:padding="@dimen/_1sdp"
+                                    android:text="Register Date "
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/_14sdp"
+                                    android:textStyle="normal" />
+
+                                <TextView
+                                    android:id="@+id/txtRegDate"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="right|end"
+                                    android:gravity="right|end"
+                                    android:padding="@dimen/_2sdp"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/_10sdp"
+                                    android:textStyle="" />
+
+                            </LinearLayout>
 
                         </LinearLayout>
 
+                        <com.github.mikephil.charting.charts.PieChart
+                            android:id="@+id/piechart"
+                            android:visibility="gone"
+                            android:layout_width="@dimen/_140sdp"
+                            android:layout_height="@dimen/_140sdp"
+                            android:layout_below="@+id/llImage"
+                            android:layout_centerInParent="true"
+                            android:layout_margin="@dimen/_5sdp"
+                            android:padding="@dimen/_10sdp" />
 
-                        <!--
-                                    <de.hdodenhof.circleimageview.CircleImageView
-                                        android:id="@+id/profile_image"
-                                        android:layout_width="96dp"
-                                        android:layout_height="96dp"
-                                        android:layout_gravity="center"
-                                        android:src="@drawable/person"
-                                        app:civ_border_color="#FF000000"
-                                        app:civ_border_width="2dp" />
-                        -->
+                        <RelativeLayout
+                            android:orientation="horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent">
 
 
-                    </LinearLayout>
+                            <LinearLayout
+                                android:layout_alignParentStart="true"
+                                android:layout_alignParentLeft="true"
+                                android:layout_width="wrap_content"
+                                android:paddingStart="@dimen/_15sdp"
+                                android:paddingLeft="@dimen/_15sdp"
+                                android:layout_height="match_parent">
 
-                    <LinearLayout
-                        android:visibility="gone"
+
+                                <ImageView
+                                    android:id="@+id/ivQrCode"
+                                    android:src="@drawable/ic_qr1"
+                                    android:layout_gravity="bottom"
+                                    android:elevation="@dimen/_10sdp"
+                                    android:layout_width="@dimen/_36sdp"
+                                    android:layout_height="@dimen/_36sdp" />
+
+
+                            </LinearLayout>
+
+                            <com.github.lzyzsd.circleprogress.ArcProgress
+                                android:id="@+id/arc_progress"
+                                android:layout_centerInParent="true"
+                                android:layout_width="@dimen/_160sdp"
+                                android:layout_height="@dimen/_165sdp"
+                                app:arc_max="14"
+                                app:arc_suffix_text=""
+                                app:arc_text_color="#213caf"
+                                app:arc_text_size="@dimen/_60sdp"
+                                app:arc_finished_color="#02a3c1"
+                                app:arc_unfinished_color="#213caf"
+                                app:arc_stroke_width="@dimen/_15sdp"
+                                android:layout_margin="@dimen/_5sdp"
+                                android:padding="@dimen/_20sdp"
+                                app:arc_bottom_text_size="@dimen/_13sdp"
+                                app:arc_bottom_text="DAYS LEFT"/>
+
+                            <LinearLayout
+                                android:layout_alignParentRight="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_width="wrap_content"
+                                android:paddingRight="@dimen/_15sdp"
+                                android:paddingEnd="@dimen/_15sdp"
+                                android:layout_height="match_parent">
+
+                                <ImageView
+                                    android:id="@+id/ivSetlocation"
+                                    android:layout_gravity="bottom"
+                                    android:elevation="@dimen/_10sdp"
+                                    android:src="@drawable/ic_setlocation1"
+                                    android:layout_width="@dimen/_36sdp"
+                                    android:layout_height="@dimen/_36sdp" />
+
+                            </LinearLayout>
+
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="@dimen/_2sdp"
-                        android:orientation="horizontal"
+                        android:layout_height="0dp"
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        android:gravity="top"
                         android:padding="@dimen/_2sdp"
-                        android:weightSum="2">
+                        android:visibility="visible">
 
-                        <androidx.cardview.widget.CardView
+                        <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            app:cardCornerRadius="@dimen/_2sdp"
-                            app:cardElevation="@dimen/_2sdp"
-                            app:cardUseCompatPadding="true">
+                            android:ellipsize="end"
+                            android:layout_gravity="top"
+                            android:gravity="center"
+                            android:paddingStart="@dimen/_10sdp"
+                            android:paddingLeft="@dimen/_10sdp"
+                            android:text="Scan \n  QR Code"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:fontFamily="@font/nunito_semibold"
+                            android:padding="@dimen/_1sdp"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10sdp"
+                            android:textStyle="normal" />
 
-                            <TextView
-                                android:id="@+id/scanQrCode"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_margin="@dimen/_2sdp"
-                                android:background="@android:color/white"
-                                android:drawableTop="@drawable/ic_qr_code1"
-                                android:padding="@dimen/_10sdp"
-                                android:text="QR SCAN"
-                                android:textStyle="bold" />
 
-                        </androidx.cardview.widget.CardView>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/nunito_semibold"
+                            android:gravity="bottom|center"
+                            android:padding="@dimen/_1sdp"
+                            android:text="My Quarantine Period"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_16sdp"
+                            android:textStyle="normal" />
 
-                        <androidx.cardview.widget.CardView
-                            android:id="@+id/cartviewNFCScan"
+                        <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            app:cardCornerRadius="@dimen/_2sdp"
-                            app:cardElevation="@dimen/_2sdp"
-                            app:cardUseCompatPadding="true">
+                            android:ellipsize="end"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_gravity="top"
+                            android:gravity="center"
+                            android:paddingEnd="@dimen/_10sdp"
+                            android:paddingRight="@dimen/_10sdp"
+                            android:text="Set \n Location"
+                            android:fontFamily="@font/nunito_semibold"
+                            android:padding="@dimen/_1sdp"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10sdp"
+                            android:textStyle="normal" />
 
-                            <TextView
-                                android:id="@+id/scanNFCTag"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_margin="@dimen/_2sdp"
-                                android:layout_weight="1"
-                                android:drawableTop="@drawable/ic_nfc_tag_1"
-                                android:padding="@dimen/_10sdp"
-                                android:text="NFC SCAN"
-                                android:textStyle="bold" />
 
-                        </androidx.cardview.widget.CardView>
-
-                    </LinearLayout>
+                    </RelativeLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/_5sdp"
-                        android:background="@drawable/bg_stroke"
                         android:orientation="vertical"
                         android:padding="@dimen/_5sdp"
                         android:visibility="gone">
 
-                        <LinearLayout
+                        <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal">
+                            android:ellipsize="end"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:fontFamily="@font/nunito_semibold"
+                            android:padding="@dimen/_1sdp"
+                            android:text="My Quarantine Period"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_16sdp"
+                            android:textStyle="normal" />
 
-
-                            <TextView
-                                android:id="@+id/lblCDaysPending"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Confiment Days pending : "
-                                android:textColor="@color/colorPrimary"
-                                android:textSize="@dimen/_12sdp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:id="@+id/txtCDaysPending"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="" />
-
-                        </LinearLayout>
 
                     </LinearLayout>
 
-                    <LinearLayout
+
+                    <!--
+                                <de.hdodenhof.circleimageview.CircleImageView
+                                    android:id="@+id/profile_image"
+                                    android:layout_width="96dp"
+                                    android:layout_height="96dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/person"
+                                    app:civ_border_color="#FF000000"
+                                    app:civ_border_width="2dp" />
+                    -->
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/_2sdp"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_2sdp"
+                    android:weightSum="2">
+
+                    <androidx.cardview.widget.CardView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_margin="@dimen/_4sdp"
-                        android:background="@drawable/band_bg"
-                        android:orientation="horizontal">
+                        android:layout_weight="1"
+                        app:cardCornerRadius="@dimen/_2sdp"
+                        app:cardElevation="@dimen/_2sdp"
+                        app:cardUseCompatPadding="true">
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:clickable="false"
-                            android:gravity="center"
-                            android:padding="@dimen/_3sdp"
-                            android:text="  Tracker  "
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/_10sdp"
-                            android:textStyle="normal" />
-
-                        <TextView
-                            android:id="@+id/btnBand"
+                            android:id="@+id/scanQrCode"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_margin="@dimen/_2sdp"
-                            android:background="#009345"
-                            android:clickable="false"
-                            android:gravity="center"
-                            android:padding="@dimen/_3sdp"
-                            android:text="  Active  "
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/_10sdp"
-                            android:textStyle="normal" />
+                            android:background="@android:color/white"
+                            android:drawableTop="@drawable/ic_qr_code1"
+                            android:padding="@dimen/_10sdp"
+                            android:text="QR SCAN"
+                            android:textStyle="bold" />
 
+                    </androidx.cardview.widget.CardView>
 
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cartviewNFCScan"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="bottom"
-                        android:gravity="bottom"
-                        android:orientation="horizontal"
-                        android:padding="@dimen/_1sdp"
-                        android:weightSum="2">
+                        android:layout_weight="1"
+                        app:cardCornerRadius="@dimen/_2sdp"
+                        app:cardElevation="@dimen/_2sdp"
+                        app:cardUseCompatPadding="true">
 
                         <TextView
-                            android:id="@+id/lblLastUpdate"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="right"
-                            android:fontFamily="@font/nunito_semibold"
-                            android:text="  Last Update  "
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/_12sdp" />
-
-                        <TextView
-                            android:id="@+id/txtLastUpdate"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:paddingStart="@dimen/_10sdp"
-                            android:paddingLeft="@dimen/_10sdp"
-                            android:text="  No Updae Yet"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/_12sdp" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:visibility="gone"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_10sdp"
-                        android:layout_marginLeft="@dimen/_10sdp"
-                        android:layout_marginTop="@dimen/_minus40sdp"
-                        android:layout_marginEnd="@dimen/_10sdp"
-                        android:layout_marginRight="@dimen/_10sdp"
-                        android:layout_weight="2"
-                        android:orientation="horizontal">
-
-                        <androidx.cardview.widget.CardView
+                            android:id="@+id/scanNFCTag"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="@dimen/_2sdp"
                             android:layout_weight="1"
-                            app:cardCornerRadius="@dimen/_4sdp"
-                            app:cardElevation="@dimen/_4sdp"
-                            app:cardUseCompatPadding="true">
+                            android:drawableTop="@drawable/ic_nfc_tag_1"
+                            android:padding="@dimen/_10sdp"
+                            android:text="NFC SCAN"
+                            android:textStyle="bold" />
+
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:background="@drawable/bg_stroke"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_5sdp"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:id="@+id/lblCDaysPending"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Confiment Days pending : "
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/_12sdp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtCDaysPending"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1.5"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/_4sdp"
+                    android:background="@drawable/band_bg"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:clickable="false"
+                        android:gravity="center"
+                        android:padding="@dimen/_3sdp"
+                        android:text="  Tracker  "
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_10sdp"
+                        android:textStyle="normal" />
+
+                    <TextView
+                        android:id="@+id/btnBand"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="@dimen/_2sdp"
+                        android:background="#009345"
+                        android:clickable="false"
+                        android:gravity="center"
+                        android:padding="@dimen/_3sdp"
+                        android:text="  Active  "
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_10sdp"
+                        android:textStyle="normal" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_1sdp"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:id="@+id/lblLastUpdate"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="right|center_vertical"
+                        android:fontFamily="@font/nunito_semibold"
+                        android:text="  Last Update  "
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12sdp" />
+
+                    <TextView
+                        android:id="@+id/txtLastUpdate"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:paddingStart="@dimen/_10sdp"
+                        android:paddingLeft="@dimen/_10sdp"
+                        android:text="  No Updae Yet"
+                        android:textColor="@color/black"
+                        android:gravity="left|center_vertical"
+                        android:textSize="@dimen/_12sdp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_minus40sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_weight="2"
+                    android:orientation="horizontal">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="@dimen/_4sdp"
+                        app:cardElevation="@dimen/_4sdp"
+                        app:cardUseCompatPadding="true">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start|center_vertical"
+                                android:layout_margin="@dimen/_2sdp"
+                                android:clickable="false"
+                                android:drawableLeft="@drawable/ic_location"
+                                android:gravity="start|center_vertical"
+                                android:padding="@dimen/_2sdp"
+                                android:text="  Quarantine range"
+                                android:textColor="@color/black"
+                                android:textStyle="bold" />
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:orientation="vertical">
+                                android:orientation="horizontal">
+
 
                                 <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="start|center_vertical"
-                                    android:layout_margin="@dimen/_2sdp"
-                                    android:clickable="false"
-                                    android:drawableLeft="@drawable/ic_location"
-                                    android:gravity="start|center_vertical"
-                                    android:padding="@dimen/_2sdp"
-                                    android:text="  Quarantine range"
-                                    android:textColor="@color/black"
-                                    android:textStyle="bold" />
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="horizontal">
-
-
-                                    <TextView
-                                        android:id="@+id/tvQuarentineRange"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_gravity="center"
-                                        android:layout_margin="@dimen/_2sdp"
-                                        android:clickable="false"
-                                        android:gravity="center"
-                                        android:padding="@dimen/_2sdp"
-                                        android:text="50 Meters"
-                                        android:textColor="@color/black"
-                                        android:textSize="@dimen/_14sdp"
-                                        android:textStyle="bold" />
-
-                                    <TextView
-                                        android:id="@+id/btnlocation"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_gravity="center"
-                                        android:layout_margin="@dimen/_2sdp"
-                                        android:clickable="false"
-                                        android:gravity="center"
-                                        android:padding="@dimen/_2sdp"
-                                        android:text="(In Home)"
-                                        android:textColor="@color/black"
-                                        android:textSize="@dimen/_10sdp"
-                                        android:textStyle="bold" />
-
-
-                                </LinearLayout>
-
-
-                            </LinearLayout>
-
-                        </androidx.cardview.widget.CardView>
-
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            app:cardCornerRadius="@dimen/_4sdp"
-                            app:cardElevation="@dimen/_4sdp"
-                            app:cardUseCompatPadding="true">
-
-                <!--            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:id="@+id/lblViolationsRecorded"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="start|center_vertical"
-                                    android:layout_margin="@dimen/_2sdp"
-                                    android:clickable="false"
-                                    android:drawableLeft="@drawable/ic_attention"
-                                    android:gravity="start|center_vertical"
-                                    android:padding="@dimen/_2sdp"
-                                    android:text="  Violations done"
-                                    android:textColor="@color/black"
-                                    android:textStyle="bold" />
-
-                                <TextView
-                                    android:id="@+id/txtViolationsRecorded"
-                                    android:layout_width="match_parent"
+                                    android:id="@+id/tvQuarentineRange"
+                                    android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:layout_margin="@dimen/_2sdp"
                                     android:clickable="false"
                                     android:gravity="center"
                                     android:padding="@dimen/_2sdp"
-                                    android:text="50"
+                                    android:text="50 Meters"
                                     android:textColor="@color/black"
                                     android:textSize="@dimen/_14sdp"
                                     android:textStyle="bold" />
 
-
-                            </LinearLayout>-->
-
-                        </androidx.cardview.widget.CardView>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:layout_weight="1"
-                        android:background="#009345"
-                        android:orientation="vertical"
-                        android:visibility="gone">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="#009345"
-                            android:orientation="horizontal"
-                            android:weightSum="1">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="0.7"
-                                android:ellipsize="end"
-                                android:gravity="center_vertical"
-                                android:padding="@dimen/_4sdp"
-                                android:text="My Location"
-                                android:textColor="@color/white"
-                                android:textSize="@dimen/_16sdp"
-                                android:textStyle="bold" />
-
-                            <androidx.cardview.widget.CardView
-                                android:id="@+id/cvsetLoc"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_gravity="right"
-                                android:layout_weight="0.3"
-                                app:cardCornerRadius="@dimen/_2sdp"
-                                app:cardElevation="@dimen/_4sdp"
-                                app:cardUseCompatPadding="true">
-
-
                                 <TextView
-                                    android:id="@+id/setLocation"
+                                    android:id="@+id/btnlocation"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="match_parent"
+                                    android:layout_height="wrap_content"
                                     android:layout_gravity="center"
+                                    android:layout_margin="@dimen/_2sdp"
+                                    android:clickable="false"
                                     android:gravity="center"
-                                    android:padding="@dimen/_4sdp"
-                                    android:text="Set Location"
-                                    android:textAllCaps="false"
-                                    android:textColor="@color/gray"
+                                    android:padding="@dimen/_2sdp"
+                                    android:text="(In Home)"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_10sdp"
                                     android:textStyle="bold" />
 
-                            </androidx.cardview.widget.CardView>
+
+                            </LinearLayout>
 
 
                         </LinearLayout>
 
+                    </androidx.cardview.widget.CardView>
 
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="#009345"
-                        android:orientation="horizontal"
-                        android:paddingLeft="@dimen/_7sdp"
-                        android:visibility="gone"
-                        android:weightSum="2">
+                        android:layout_weight="1"
+                        app:cardCornerRadius="@dimen/_4sdp"
+                        app:cardElevation="@dimen/_4sdp"
+                        app:cardUseCompatPadding="true">
+
+                        <!--            <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:id="@+id/lblViolationsRecorded"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="start|center_vertical"
+                                            android:layout_margin="@dimen/_2sdp"
+                                            android:clickable="false"
+                                            android:drawableLeft="@drawable/ic_attention"
+                                            android:gravity="start|center_vertical"
+                                            android:padding="@dimen/_2sdp"
+                                            android:text="  Violations done"
+                                            android:textColor="@color/black"
+                                            android:textStyle="bold" />
+
+                                        <TextView
+                                            android:id="@+id/txtViolationsRecorded"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_margin="@dimen/_2sdp"
+                                            android:clickable="false"
+                                            android:gravity="center"
+                                            android:padding="@dimen/_2sdp"
+                                            android:text="50"
+                                            android:textColor="@color/black"
+                                            android:textSize="@dimen/_14sdp"
+                                            android:textStyle="bold" />
 
 
-                        <TextView
-                            android:id="@+id/txtLat"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="left"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/_12sdp"
-                            android:textStyle="bold" />
+                                    </LinearLayout>-->
 
+                    </androidx.cardview.widget.CardView>
 
-                        <TextView
-                            android:id="@+id/txtLong"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="left"
-                            android:text=""
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/_12sdp"
-                            android:textStyle="bold" />
+                </LinearLayout>
 
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:visibility="gone"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="#009345"
-                        android:orientation="vertical"
-                        android:padding="@dimen/_2sdp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-
-                            <TextView
-                                android:id="@+id/lblMyLocation"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="My Location: "
-                                android:visibility="gone" />
-
-                            <TextView
-                                android:id="@+id/txtMyLocation"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text=""
-                                android:textColor="@color/colorPrimary"
-                                android:textSize="@dimen/_12sdp"
-                                android:textStyle="bold"
-                                android:visibility="gone" />
-
-                        </LinearLayout>
-
-
-                    </LinearLayout>
-
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:background="#009345"
+                    android:orientation="vertical"
+                    android:visibility="gone">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:background="#009345"
+                        android:orientation="horizontal"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.7"
+                            android:ellipsize="end"
+                            android:gravity="center_vertical"
+                            android:padding="@dimen/_4sdp"
+                            android:text="My Location"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_16sdp"
+                            android:textStyle="bold" />
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cvsetLoc"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right"
+                            android:layout_weight="0.3"
+                            app:cardCornerRadius="@dimen/_2sdp"
+                            app:cardElevation="@dimen/_4sdp"
+                            app:cardUseCompatPadding="true">
+
+
+                            <TextView
+                                android:id="@+id/setLocation"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:padding="@dimen/_4sdp"
+                                android:text="Set Location"
+                                android:textAllCaps="false"
+                                android:textColor="@color/gray"
+                                android:textStyle="bold" />
+
+                        </androidx.cardview.widget.CardView>
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#009345"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/_7sdp"
+                    android:visibility="gone"
+                    android:weightSum="2">
+
+
+                    <TextView
+                        android:id="@+id/txtLat"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_12sdp"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:id="@+id/txtLong"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:text=""
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_12sdp"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#009345"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_2sdp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:id="@+id/lblMyLocation"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="My Location: "
+                            android:visibility="gone" />
+
+                        <TextView
+                            android:id="@+id/txtMyLocation"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/_12sdp"
+                            android:textStyle="bold"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="7"
+                    android:layout_gravity="bottom"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/home_back1"
+                    android:gravity="bottom"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_1sdp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:padding="@dimen/_15sdp"
+                        android:weightSum="10"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_weight="2"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/lblViolationsRecorded"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start|center_vertical"
+                                android:layout_margin="@dimen/_2sdp"
+                                android:clickable="false"
+                                android:textSize="@dimen/_16sdp"
+                                android:gravity="start|center_vertical"
+                                android:fontFamily="@font/nunito_semibold"
+                                android:text="  Location Violations"
+                                android:textColor="#FFFFFF"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start|center_vertical"
+                                android:layout_margin="@dimen/_2sdp"
+                                android:clickable="false"
+                                android:textSize="@dimen/_12sdp"
+                                android:gravity="start|center_vertical"
+                                android:padding="@dimen/_2sdp"
+                                android:fontFamily="@font/nunito"
+                                android:text="  Movements beyond allowed range"
+                                android:textColor="#FFFFFF"
+                                android:textStyle="bold" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_weight="8"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/txtGeoViolationsRecorded"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:layout_margin="@dimen/_2sdp"
+                                android:clickable="false"
+                                android:gravity="center"
+                                android:fontFamily="@font/nunito_bold"
+                                android:padding="@dimen/_2sdp"
+                                android:text="50"
+                                android:textColor="#FFFFFF"
+                                android:textSize="@dimen/_30sdp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:background="@drawable/home_back1"
-                        android:gravity="bottom"
-                        android:orientation="vertical"
+                        android:background="@drawable/home_back2"
+                        android:orientation="horizontal"
                         android:padding="@dimen/_1sdp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:padding="@dimen/_20sdp"
                             android:weightSum="10"
+                            android:padding="@dimen/_20sdp"
                             android:layout_height="@dimen/_100sdp"
                             android:orientation="horizontal">
 
@@ -741,7 +843,6 @@
                                 android:layout_height="wrap_content">
 
                                 <TextView
-                                    android:id="@+id/lblViolationsRecorded"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="start|center_vertical"
@@ -750,7 +851,7 @@
                                     android:textSize="@dimen/_16sdp"
                                     android:gravity="start|center_vertical"
                                     android:fontFamily="@font/nunito_semibold"
-                                    android:text="  Location Violations"
+                                    android:text="  Tracker Violations"
                                     android:textColor="#FFFFFF"
                                     android:textStyle="bold" />
 
@@ -764,7 +865,7 @@
                                     android:gravity="start|center_vertical"
                                     android:padding="@dimen/_2sdp"
                                     android:fontFamily="@font/nunito"
-                                    android:text="  Movements beyond allowed range"
+                                    android:text="  Invalid scans of tracking band"
                                     android:textColor="#FFFFFF"
                                     android:textStyle="bold" />
 
@@ -778,7 +879,7 @@
                                 android:layout_height="match_parent">
 
                                 <TextView
-                                    android:id="@+id/txtGeoViolationsRecorded"
+                                    android:id="@+id/txtViolationsRecorded"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:layout_gravity="center"
@@ -794,100 +895,24 @@
 
                             </LinearLayout>
 
-                        </LinearLayout>
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="bottom"
-                            android:background="@drawable/home_back2"
-                            android:orientation="horizontal"
-                            android:padding="@dimen/_1sdp">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:weightSum="10"
-                                android:padding="@dimen/_20sdp"
-                                android:layout_height="@dimen/_100sdp"
-                                android:orientation="horizontal">
-
-                                <LinearLayout
-                                    android:layout_weight="2"
-                                    android:orientation="vertical"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_gravity="start|center_vertical"
-                                        android:layout_margin="@dimen/_2sdp"
-                                        android:clickable="false"
-                                        android:textSize="@dimen/_16sdp"
-                                        android:gravity="start|center_vertical"
-                                        android:fontFamily="@font/nunito_semibold"
-                                        android:text="  Tracker Violations"
-                                        android:textColor="#FFFFFF"
-                                        android:textStyle="bold" />
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_gravity="start|center_vertical"
-                                        android:layout_margin="@dimen/_2sdp"
-                                        android:clickable="false"
-                                        android:textSize="@dimen/_12sdp"
-                                        android:gravity="start|center_vertical"
-                                        android:padding="@dimen/_2sdp"
-                                        android:fontFamily="@font/nunito"
-                                        android:text="  Invalid scans of tracking band"
-                                        android:textColor="#FFFFFF"
-                                        android:textStyle="bold" />
-
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_weight="8"
-                                    android:orientation="vertical"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent">
-
-                                    <TextView
-                                        android:id="@+id/txtViolationsRecorded"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_gravity="center"
-                                        android:layout_margin="@dimen/_2sdp"
-                                        android:clickable="false"
-                                        android:gravity="center"
-                                        android:fontFamily="@font/nunito_bold"
-                                        android:padding="@dimen/_2sdp"
-                                        android:text="50"
-                                        android:textColor="#FFFFFF"
-                                        android:textSize="@dimen/_30sdp"
-                                        android:textStyle="bold" />
-
-                                </LinearLayout>
-
-
-
-
-                            </LinearLayout>
 
 
                         </LinearLayout>
+
 
                     </LinearLayout>
 
-                    <!-- <fragment
-                        android:id="@+id/map"
-                        android:name="com.google.android.gms.maps.MapFragment"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_125sdp"
-                        android:visibility="gone" />-->
-
                 </LinearLayout>
+
+                <!-- <fragment
+                    android:id="@+id/map"
+                    android:name="com.google.android.gms.maps.MapFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_125sdp"
+                    android:visibility="gone" />-->
+
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -899,10 +924,10 @@
             android:layout_alignParentBottom="true"
             android:layout_marginStart="0dp"
             android:layout_marginEnd="0dp"
-            android:background="#FF373D59"
+            android:background="#FFF"
             app:elevation="@dimen/_16sdp"
-            app:itemIconTint="@color/white"
-            app:itemTextColor="@color/white"
+            app:itemIconTint="#FF373D59"
+            app:itemTextColor="#FF373D59"
             app:labelVisibilityMode="unlabeled"
             app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"
             app:menu="@menu/navigation" />
