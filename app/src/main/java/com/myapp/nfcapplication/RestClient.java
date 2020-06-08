@@ -27,9 +27,9 @@ class RestClient {
                 retrofit = new Retrofit.Builder()
                        // .baseUrl(ServiceURL.getServiceUrl()).client(client)
                        //.baseUrl("http://103.210.73.73/api/").client(client)
-                       .baseUrl("http://192.168.1.36/Cordonoff/").client(client)
+                       //.baseUrl("http://192.168.1.36/Cordonoff/").client(client)
                        //.baseUrl("http://192.168.1.143/Cordonoff/").client(client)
-                       // .baseUrl("http://cordonoff.in/api/").client(client)
+                        .baseUrl("http://cordonoff.in/api/").client(client)
                         .addConverterFactory(GsonConverterFactory.create())
                         .build();
             }

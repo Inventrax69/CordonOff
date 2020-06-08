@@ -20,18 +20,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <TextView
         android:id="@+id/btn_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="@dimen/_5sdp"
         android:layout_marginEnd="@dimen/_25sdp"
         android:layout_marginRight="@dimen/_25sdp"
-        android:layout_marginBottom="@dimen/_13sdp"
-        android:background="#fff"
+        android:layout_marginBottom="@dimen/_20sdp"
+        android:background="@drawable/btn_gradient_style"
+        android:textSize="@dimen/_12sdp"
+        android:fontFamily="@font/nunito_semibold"
         android:drawableRight="@drawable/ic_arrow_forward_black_24dp"
-        android:drawableTint="#4c84ff"
-        android:text="Next"
-        android:textColor="#4c84ff"
+        android:text=" Next "
+        android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -52,19 +54,22 @@
 
     </com.google.android.material.tabs.TabLayout>
 
-    <Button
+    <TextView
         android:visibility="invisible"
         android:id="@+id/btn_get_started"
-        android:layout_width="@dimen/_120sdp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="@dimen/_5sdp"
         android:layout_marginStart="@dimen/_6sdp"
         android:layout_marginLeft="@dimen/_6sdp"
         android:layout_marginEnd="@dimen/_6sdp"
         android:layout_marginRight="@dimen/_6sdp"
-        android:layout_marginBottom="@dimen/_49sdp"
+        android:layout_marginBottom="@dimen/_20sdp"
         android:background="@drawable/btn_gradient_style"
-        android:text="Get Stared"
-        android:textColor="#4c84ff"
+        android:text="   Get Stared   "
+        android:textSize="@dimen/_12sdp"
+        android:fontFamily="@font/nunito_semibold"
+        android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -74,6 +79,7 @@
         android:textStyle="bold"
         android:textColor="#2d2d2d"
         android:id="@+id/tv_skip"
+        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_18sdp"

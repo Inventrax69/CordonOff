@@ -8,7 +8,6 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.PendingIntent;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
@@ -23,7 +22,6 @@ import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.Network;
 import android.net.NetworkCapabilities;
-import android.net.NetworkInfo;
 import android.nfc.FormatException;
 import android.nfc.NdefMessage;
 import android.nfc.NfcAdapter;
@@ -52,17 +50,16 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.github.lzyzsd.circleprogress.ArcProgress;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
@@ -81,7 +78,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.gson.Gson;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
@@ -89,7 +86,6 @@ import com.myapp.nfcapplication.Interface.ApiInterface;
 import com.myapp.nfcapplication.Pojo.CustomerRegistration;
 
 import java.io.IOException;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -111,7 +107,7 @@ public class UserActivity extends AppCompatActivity implements OnMapReadyCallbac
     private NfcAdapter mNfcAdapter;
     final protected static char[] hexArray = "0123456789ABCDEF".toCharArray();
     TextView txtData, txtLat, txtLong, txtMyLocation, txtLastUpdate, txtRegDate, txtCDaysPending,
-            txtViolationsRecorded, scanNFCTag, txtUserName, txtPhoneNumber, tvQuarentineRange;
+            txtViolationsRecorded, scanNFCTag, txtUserName, txtPhoneNumber, tvQuarentineRange,txtGeoViolationsRecorded;
     TextView scanQrCode;
     TextView setLocation;
     int PERMISSION_ID = 44;
@@ -145,6 +141,12 @@ public class UserActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     DrawerFragment drawerFragment;
     CardView cvsetLoc;
+    BottomNavigationView navigation;
+
+    ArcProgress arcProgress;
+
+    ImageView ivQrCode,ivSetlocation;
+
 
     private void startAlarm() {
 
@@ -185,6 +187,10 @@ public class UserActivity extends AppCompatActivity implements OnMapReadyCallbac
         txtRegDate = findViewById(R.id.txtRegDate);
         txtCDaysPending = findViewById(R.id.txtCDaysPending);
         txtViolationsRecorded = findViewById(R.id.txtViolationsRecorded);
+        txtGeoViolationsRecorded = findViewById(R.id.txtGeoViolationsRecorded);
+
+
+        arcProgress= (ArcProgress)findViewById(R.id.arc_progress);
 
         scanQrCode = findViewById(R.id.scanQrCode);
         setLocation = findViewById(R.id.setLocation);
@@ -208,6 +214,7 @@ public class UserActivity extends AppCompatActivity implements OnMapReadyCallbac
         });
 
         toolBar = findViewById(R.id.toolBar);
+        toolBar.setTitleTextColor(Color.BLACK);
 
         setSupportActionBar(toolBar);
 
@@ -233,9 +240,11 @@ public class UserActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         });
 
+/*
         mapFragment = (MapFragment) getFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+*/
 
         tvQuarentineRange = findViewById(R.id.tvQuarentineRange);
         tvQuarentineRange.setText(prefs.getInt(KeyValues.CONFIGURED_GEO_LOCATION,50)+" Meters");
@@ -287,8 +296,8 @@ public class UserActivity extends AppCompatActivity implements OnMapReadyCallbac
         txtRegDate.setText(prefs.getString(KeyValues.CREATED_DATE, ""));
         // txtRegDate.setText("28-05-2020 12:00:00"); 5/28/2020 12:00:00 AM
         currentTime = Calendar.getInstance().getTime();
-        //SimpleDateFormat formatIn = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss a");
-         SimpleDateFormat formatIn = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
+        SimpleDateFormat formatIn = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss a");
+        // SimpleDateFormat formatIn = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
         try {
             date = formatIn.parse(txtRegDate.getText().toString());
             // txtCDaysPending.setText("" + (toNoOfdaysConfined - getDaysDiff(currentTime, date)) + " Days");
@@ -305,9 +314,15 @@ public class UserActivity extends AppCompatActivity implements OnMapReadyCallbac
         PieChart pieChart = (PieChart) findViewById(R.id.piechart);
         ArrayList<PieEntry> entries = new ArrayList<>();
         if ((toNoOfdaysConfined - getDaysDiff(currentTime, date)) > 0) {
+
+            arcProgress.setProgress((int) remainDays);
+            arcProgress.setSuffixText("");
+
             entries.add(new PieEntry((float) completedDays, ""));
             entries.add(new PieEntry((float) remainDays, ""));
         } else {
+            arcProgress.setProgress(toNoOfdaysConfined);
+            arcProgress.setSuffixText("");
             entries.add(new PieEntry(100f, ""));
             entries.add(new PieEntry(0f, ""));
         }
@@ -322,6 +337,7 @@ public class UserActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
 
         pieChart.setCenterTextSize(14f);
+        pieChart.setMinimumWidth(10);
         pieChart.setCenterTextTypeface(Typeface.DEFAULT_BOLD);
         pieChart.setCenterTextColor(Color.BLUE);
         pieChart.setData(pieData);
@@ -342,9 +358,9 @@ public class UserActivity extends AppCompatActivity implements OnMapReadyCallbac
         if (isHomeQuarantine == 0) {
             setLocation.setVisibility(View.VISIBLE);
             cvsetLoc.setVisibility(View.VISIBLE);
-            mapFragment.getView().setVisibility(View.GONE);
+           // mapFragment.getView().setVisibility(View.GONE);
         } else {
-            mapFragment.getView().setVisibility(View.VISIBLE);
+           // mapFragment.getView().setVisibility(View.VISIBLE);
             setLocation.setVisibility(View.GONE);
             cvsetLoc.setVisibility(View.GONE);
             txtLat.setText("Lat: "+" "+homeLat);
@@ -546,7 +562,90 @@ public class UserActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
 
 
+        navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        BottomNavigationViewHelper.removeShiftMode(navigation);       // removes bottom navigation bar animation
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+
+        getDetails();
+
+        ivQrCode = (ImageView)findViewById(R.id.ivQrCode);
+        ivSetlocation = (ImageView)findViewById(R.id.ivSetlocation);
+
+        ivQrCode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                qrScan.initiateScan();
+            }
+        });
+
+        ivSetlocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (getDaysDiff(currentTime, date) <= 2) {
+                    value = "1";
+                    getLastLocation(value);
+                }else{
+                    Toast.makeText(UserActivity.this, "Already home location is set", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(UserActivity.this, UserMapActivity.class));
+                    finish();
+                }
+
+            }
+        });
+
     }
+
+
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+            switch (item.getItemId()) {
+
+                case R.id.navigation_home:
+ /*                   if (getApplicationContext() instanceof UserActivity) {
+
+                    } else {
+                        startActivity(new Intent(UserActivity.this, UserActivity.class));
+                        finish();
+                    }*/
+                    return true;
+
+                case R.id.aboutcovid:
+                    if (getApplicationContext() instanceof AboutCovidActivity) {
+
+                    } else {
+                        startActivity(new Intent(UserActivity.this, AboutCovidActivity.class));
+                        finish();
+                    }
+                    return true;
+
+                case R.id.aboutq:
+                    if (getApplicationContext() instanceof AboutQuartineActivity) {
+
+                    } else {
+                        startActivity(new Intent(UserActivity.this, AboutQuartineActivity.class));
+                        finish();
+                    }
+                    return true;
+
+                case R.id.Location:
+                    if( !prefs.getString(KeyValues.LATITUDE, "").equals("") && !prefs.getString(KeyValues.LONGITUDE, "").equals("")){
+                            startActivity(new Intent(UserActivity.this, UserMapActivity.class));
+                           finish();
+                    }else{
+
+                        Toast.makeText(UserActivity.this, "Home Location not yet set please set it.", Toast.LENGTH_SHORT).show();
+                    }
+                    return true;
+
+            }
+            return false;
+        }
+    };
+
 
 
     @Override
@@ -721,6 +820,7 @@ public class UserActivity extends AppCompatActivity implements OnMapReadyCallbac
                     if(!customerDto.getQRCode().isEmpty() || customerDto.getIsMobileNFCEnabled()!=0) {
 
                         txtViolationsRecorded.setText(customerDto.getVialotionCount()+"");
+                        txtGeoViolationsRecorded.setText(customerDto.getGeoVialotionCount()+"");
 
                     }else {
                         Toast.makeText(UserActivity.this, "Tag activation not yet done. Please do active tag.", Toast.LENGTH_SHORT).show();
@@ -792,7 +892,7 @@ public class UserActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        if (intent.getAction().equalsIgnoreCase(NfcAdapter.ACTION_TAG_DISCOVERED)) {
+        if (intent.getAction()!= null && intent.getAction().equalsIgnoreCase(NfcAdapter.ACTION_TAG_DISCOVERED)) {
             Tag tag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
             NdefMessage ndefMessage = null;
             Parcelable[] rawMessages = intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
@@ -961,7 +1061,7 @@ public class UserActivity extends AppCompatActivity implements OnMapReadyCallbac
                         editor.putString(KeyValues.LONGITUDE, "" + longitude);
                         editor.putInt(KeyValues.IS_HOME_QUARANTINE, 1);
                         editor.apply();
-                        mapFragment.getView().setVisibility(View.VISIBLE);
+                        //mapFragment.getView().setVisibility(View.VISIBLE);
                         setLocation.setVisibility(View.GONE);
                         cvsetLoc.setVisibility(View.GONE);
                         txtLat.setText("" + latitude);
@@ -973,7 +1073,7 @@ public class UserActivity extends AppCompatActivity implements OnMapReadyCallbac
                             txtMyLocation.setText(myAddress);
                         }
                         startAlarm();
-                        mapFragment.getMapAsync(UserActivity.this);
+                        //mapFragment.getMapAsync(UserActivity.this);
                         if (getDaysDiff(currentTime, date) <= 2) {
                             setLocation.setVisibility(View.VISIBLE);
                             cvsetLoc.setVisibility(View.VISIBLE);

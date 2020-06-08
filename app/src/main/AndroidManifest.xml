@@ -26,7 +26,14 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".TermsAndConditionActivity"></activity>
+        <activity android:name=".FAQActivity"></activity>
+        <activity android:name=".AboutQuartineActivity" />
+        <activity android:name=".AboutCovidActivity" />
+        <activity android:name=".UserMapActivity" />
+        <activity
+            android:name=".TermsAndConditionActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".MenuActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
@@ -76,7 +83,7 @@
         <activity
             android:name=".SplashActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".UserActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
@@ -139,6 +146,9 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAzPO3jaM0XCmr-ublaPL87YeJBzuXrc_g" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

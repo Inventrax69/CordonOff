@@ -133,6 +133,8 @@ public class UserLoginActivity extends AppCompatActivity {
                                 editUsername.setText("");
 
                                 startActivity(new Intent(UserLoginActivity.this, UserActivity.class));
+                                finish();
+
                             }else {
                                 Toast.makeText(UserLoginActivity.this, "Tag activation not yet done. Please do active tag.", Toast.LENGTH_SHORT).show();
                             }

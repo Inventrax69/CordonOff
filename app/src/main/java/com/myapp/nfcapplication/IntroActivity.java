@@ -8,7 +8,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,11 +27,11 @@ public class IntroActivity extends AppCompatActivity {
     private ViewPager screenPager;
     IntroViewPagerAdapter introViewPagerAdapter;
     TabLayout tabIndicator;
-    Button btnNext;
+    TextView btnNext;
     int position = 0;
-    Button btnGetStarted;
+    TextView btnGetStarted;
     Animation btnAnim;
-    TextView tvSkip;
+    //TextView tvSkip;
     public static final int MULTIPLE_PERMISSIONS = 15;
 
 
@@ -69,11 +68,11 @@ public class IntroActivity extends AppCompatActivity {
 
 
             // ini views
-            btnNext = (Button) findViewById(R.id.btn_next);
-            btnGetStarted = (Button) findViewById(R.id.btn_get_started);
+            btnNext = (TextView) findViewById(R.id.btn_next);
+            btnGetStarted = (TextView) findViewById(R.id.btn_get_started);
             tabIndicator = (TabLayout) findViewById(R.id.tab_indicator);
             btnAnim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.button_animation);
-            tvSkip = (TextView) findViewById(R.id.tv_skip);
+            //tvSkip = (TextView) findViewById(R.id.tv_skip);
 
             // fill list screen
             final List<ScreenItem> mList = new ArrayList<>();
@@ -157,12 +156,12 @@ public class IntroActivity extends AppCompatActivity {
 
             // skip button click listener
 
-            tvSkip.setOnClickListener(new View.OnClickListener() {
+/*            tvSkip.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     screenPager.setCurrentItem(mList.size());
                 }
-            });
+            });*/
         } catch (Exception ex) {
             // Toast.makeText(this,  ex.getMessage(), Toast.LENGTH_SHORT).show();
         }
@@ -193,7 +192,7 @@ public class IntroActivity extends AppCompatActivity {
 
         btnNext.setVisibility(View.INVISIBLE);
         btnGetStarted.setVisibility(View.VISIBLE);
-        tvSkip.setVisibility(View.INVISIBLE);
+        //tvSkip.setVisibility(View.INVISIBLE);
         tabIndicator.setVisibility(View.INVISIBLE);
         // TODO : ADD an animation the getstarted button
         // setup animation

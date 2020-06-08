@@ -170,8 +170,8 @@ public class TextDrawable extends ShapeDrawable {
 
         private Builder() {
             text = "";
-            color = Color.RED;
-            textColor = Color.WHITE;
+            color = Color.WHITE;
+            textColor = Color.BLUE;
             borderThickness = 0;
             width = -1;
             height = -1;

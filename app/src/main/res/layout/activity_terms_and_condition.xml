@@ -1,164 +1,195 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:padding="@dimen/_10sdp"
     tools:context=".TermsAndConditionActivity">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
 
-        <TextView
-            android:text="App Permissions"
-            android:textStyle="normal"
-            android:textSize="@dimen/_16sdp"
-            android:padding="@dimen/_10sdp"
-            android:layout_gravity="center_vertical"
-            android:gravity="center_vertical"
-            android:textColor="@color/black"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_margin="@dimen/_20sdp"
-        android:padding="@dimen/_20sdp"
-        android:background="@drawable/band_active_blue"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-
-        <TextView
-            android:text="Terms of Service and Privacy"
-            android:textStyle="bold"
-            android:textSize="@dimen/_14sdp"
-            android:textColor="@color/white"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:text="We understand the nature and sensitivity of this topic and have taken storng measures to ensure that your data is not compromised "
-            android:textStyle="normal"
-            android:textSize="@dimen/_11sdp"
-            android:padding="@dimen/_2sdp"
-            android:textColor="@color/white"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-
-        <TextView
-            android:text="Device Location"
-            android:textStyle="bold"
-            android:textSize="@dimen/_12sdp"
-            android:padding="@dimen/_5sdp"
-            android:textColor="@color/black"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:text="It is recommended that you set your location sharing to 'Always'. You can change this any time later\n"
-            android:textStyle="normal"
-            android:textSize="@dimen/_10sdp"
-            android:padding="@dimen/_5sdp"
-            android:textColor="@color/black"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-
-        <TextView
-            android:text="NFC"
-            android:textStyle="bold"
-            android:textSize="@dimen/_12sdp"
-            android:padding="@dimen/_5sdp"
-            android:textColor="@color/black"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:text="Monitors your NFC enabled wirst band proximity to your moblie device. It is recommended that you keep it on at all time \n"
-            android:textStyle="normal"
-            android:textSize="@dimen/_10sdp"
-            android:padding="@dimen/_5sdp"
-            android:textColor="@color/black"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-    </LinearLayout>
 
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".TermsAndConditionActivity">
 
-
-        <TextView
-            android:text="Data Sharing"
-            android:textStyle="bold"
-            android:textSize="@dimen/_12sdp"
-            android:padding="@dimen/_5sdp"
-            android:textColor="@color/black"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-        <TextView
-            android:text="Your Data will be shared only with Government of India.The App does not allow your name and number to be disclosd to the public at large at any time."
-            android:textStyle="normal"
-            android:textSize="@dimen/_10sdp"
-            android:padding="@dimen/_5sdp"
-            android:textColor="@color/black"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
 
-        <TextView
-            android:text="If you would like to contribute to a safer India please indicate your acceptance of the Terms of service and the Privacy Policy by clicking on the button below:"
-            android:textStyle="normal"
-            android:textSize="@dimen/_10sdp"
-            android:padding="@dimen/_5sdp"
-            android:textColor="@color/black"
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:fontFamily="@font/nunito_bold"
+                android:gravity="center_vertical"
+                android:padding="@dimen/_10sdp"
+                android:text="App Permissions\n"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sdp"
+                android:textStyle="normal" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_gradient_style"
+            android:orientation="vertical"
+            android:padding="@dimen/_20sdp">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/nunito_semibold"
+                android:gravity="center"
+                android:padding="@dimen/_2sdp"
+                android:text="Terms of Service and Privacy"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14sdp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_2sdp"
+                android:fontFamily="@font/nunito"
+                android:text="We understand the nature and sensitivity of this topic and have taken storng measures to ensure that your data is not compromised "
+                android:textColor="@color/white"
+                android:textSize="@dimen/_11sdp"
+                android:textStyle="normal" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_semibold"
+                android:padding="@dimen/_3sdp"
+                android:text="\nDevice Location"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12sdp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_3sdp"
+                android:fontFamily="@font/nunito"
+                android:text="It is recommended that you set your location sharing to 'Always'. You can change this any time later\n"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10sdp"
+                android:textStyle="normal" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_semibold"
+                android:padding="@dimen/_3sdp"
+                android:text="NFC"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12sdp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_3sdp"
+                android:fontFamily="@font/nunito"
+                android:text="Monitors your NFC enabled wirst band proximity to your moblie device. It is recommended that you keep it on at all time \n"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10sdp"
+                android:textStyle="normal" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_semibold"
+                android:padding="@dimen/_3sdp"
+                android:text="Data Sharing"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12sdp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_3sdp"
+                android:fontFamily="@font/nunito"
+                android:text="Your Data will be shared only with Government of India.The App does not allow your name and number to be disclosd to the public at large at any time."
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10sdp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_3sdp"
+                android:fontFamily="@font/nunito"
+                android:text="If you would like to contribute to a safer India please indicate your acceptance of the Terms of service and the Privacy Policy by clicking on the button below:"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10sdp"
+                android:textStyle="normal" />
+
+        </LinearLayout>
+
 
     </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
     <TextView
         android:id="@+id/btnAgree"
-        android:text="     I Agree     "
-        android:textStyle="bold"
-        android:textSize="@dimen/_12sdp"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:padding="@dimen/_10sdp"
-        android:textColor="@color/white"
-        android:background="@drawable/ok_button1"
-        android:layout_gravity="center"
-        android:gravity="center"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:background="@drawable/btn_gradient_style"
+        android:fontFamily="@font/nunito_semibold"
+        android:gravity="center"
+        android:padding="@dimen/_5sdp"
+        android:text="     I Agree     "
+        android:textColor="@color/white"
+        android:textSize="@dimen/_12sdp"
+        android:textStyle="bold" />
 
+</RelativeLayout>
 
-</LinearLayout>

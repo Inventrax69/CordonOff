@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_home"
+        android:title="" />
+
+    <!--<item
+        android:id="@+id/navigation_schemes"
+        android:icon="@drawable/redeem"
+        android:title="S &amp; D" />-->
+
+    <item
+        android:id="@+id/aboutcovid"
+        android:icon="@drawable/ic_virus"
+        android:title="" />
+
+    <item
+        android:id="@+id/aboutq"
+        android:icon="@drawable/ic_stay_home"
+        android:title="" />
+
+    <item
+        android:id="@+id/Location"
+        android:icon="@drawable/ic_location_1"
+        android:title="" />
+
+</menu>
