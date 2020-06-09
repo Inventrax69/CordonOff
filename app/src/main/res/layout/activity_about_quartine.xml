@@ -11,7 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolBar"
             android:layout_width="match_parent"
@@ -35,15 +34,12 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-
-
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_200sdp"
                     android:layout_gravity="center"
                     android:scaleType="fitCenter"
                     android:src="@drawable/qimg1" />
-
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -61,8 +57,6 @@
                     android:textColor="@color/black"
                     android:textSize="@dimen/_14sdp"
                     android:textStyle="normal" />
-
-
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -175,7 +169,6 @@
                     android:textSize="@dimen/_12sdp"
                     android:textStyle="normal" />
 
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -188,15 +181,12 @@
                     android:textSize="@dimen/_14sdp"
                     android:textStyle="normal" />
 
-
-
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_250sdp"
                     android:layout_gravity="center"
                     android:scaleType="fitCenter"
                     android:src="@drawable/qimg3" />
-
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -223,8 +213,6 @@
                     android:textSize="@dimen/_16sdp"
                     android:textStyle="normal" />
 
-
-
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -233,13 +221,11 @@
                     app:cardElevation="@dimen/_4sdp"
                     app:cardUseCompatPadding="true">
 
-
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:weightSum="2">
-
 
                         <ImageView
                             android:layout_width="match_parent"
@@ -286,7 +272,6 @@
 
                         </LinearLayout>
 
-
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
@@ -304,7 +289,6 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:weightSum="2">
-
 
                         <ImageView
                             android:layout_width="match_parent"
@@ -351,7 +335,6 @@
 
                         </LinearLayout>
 
-
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
@@ -369,7 +352,6 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:weightSum="2">
-
 
                         <ImageView
                             android:layout_width="match_parent"
@@ -416,7 +398,6 @@
 
                         </LinearLayout>
 
-
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
@@ -435,7 +416,6 @@
                         android:orientation="horizontal"
                         android:padding="@dimen/_5sdp"
                         android:weightSum="2">
-
 
                         <ImageView
                             android:layout_width="match_parent"
@@ -481,7 +461,6 @@
 
                         </LinearLayout>
 
-
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
@@ -519,13 +498,11 @@
                     app:cardElevation="@dimen/_4sdp"
                     app:cardUseCompatPadding="true">
 
-
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:weightSum="2">
-
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -572,7 +549,6 @@
                             android:scaleType="fitCenter"
                             android:src="@drawable/qimg10" />
 
-
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
@@ -590,8 +566,6 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:weightSum="2">
-
-
 
                         <LinearLayout
                             android:layout_width="match_parent"

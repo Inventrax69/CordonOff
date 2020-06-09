@@ -633,7 +633,7 @@ public class UserActivity extends AppCompatActivity implements OnMapReadyCallbac
 
                 case R.id.Location:
                     if( !prefs.getString(KeyValues.LATITUDE, "").equals("") && !prefs.getString(KeyValues.LONGITUDE, "").equals("")){
-                            startActivity(new Intent(UserActivity.this, UserMapActivity.class));
+                           startActivity(new Intent(UserActivity.this, UserMapActivity.class));
                            finish();
                     }else{
 
@@ -838,8 +838,6 @@ public class UserActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         });
     }
-
-
 
     public int getDaysDiff(Date datefrom, Date dateto) {
 
@@ -1305,7 +1303,8 @@ public class UserActivity extends AppCompatActivity implements OnMapReadyCallbac
             } else {
                 try {
                     getDistance(mLastLocation.getLatitude(), mLastLocation.getLongitude(), Double.parseDouble(txtLat.getText().toString()), Double.parseDouble(txtLong.getText().toString()));
-                } catch (Exception e) {
+                }
+                catch (Exception e) {
                     //
                 }
             }
@@ -1360,7 +1359,6 @@ public class UserActivity extends AppCompatActivity implements OnMapReadyCallbac
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
-
 
     public void setUpdate() {
         Date currentTime = Calendar.getInstance().getTime();

@@ -42,8 +42,15 @@ public class TermsAndConditionActivity extends AppCompatActivity {
             }
         });
 
+    }
 
-
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if(isTermsAndConditionsAgreed != 0){
+            Intent login = new Intent(getApplicationContext(), UserActivity.class);
+            startActivity(login);
+            finish();
+        }
     }
 }

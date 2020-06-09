@@ -772,11 +772,11 @@
                                 android:layout_gravity="start|center_vertical"
                                 android:layout_margin="@dimen/_2sdp"
                                 android:clickable="false"
-                                android:textSize="@dimen/_16sdp"
-                                android:gravity="start|center_vertical"
                                 android:fontFamily="@font/nunito_semibold"
+                                android:gravity="start|center_vertical"
                                 android:text="  Location Violations"
                                 android:textColor="#FFFFFF"
+                                android:textSize="@dimen/_16sdp"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -924,9 +924,9 @@
             android:layout_alignParentBottom="true"
             android:layout_marginStart="0dp"
             android:layout_marginEnd="0dp"
-            android:background="#FFF"
+            android:background="#FF373D59"
             app:elevation="@dimen/_16sdp"
-            app:itemIconTint="#FF373D59"
+            app:itemIconTint="#FFFFFF"
             app:itemTextColor="#FF373D59"
             app:labelVisibilityMode="unlabeled"
             app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"

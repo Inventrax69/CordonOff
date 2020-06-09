@@ -31,10 +31,10 @@
             android:gravity="center"
             android:layout_marginTop="@dimen/_10sdp"
             android:fontFamily="@font/nunito_bold"
-            android:padding="@dimen/_5sdp"
+            android:padding="@dimen/_2sdp"
             android:text="My Location infromation"
             android:textColor="@color/black"
-            android:textSize="@dimen/_20sdp"
+            android:textSize="@dimen/_18sdp"
             android:textStyle="normal" />
 
 
@@ -47,11 +47,11 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:fontFamily="@font/nunito_semibold"
-            android:padding="@dimen/_5sdp"
+            android:padding="@dimen/_2sdp"
             android:layout_marginBottom="@dimen/_10sdp"
             android:text="Location Range allowed > 50"
             android:textColor="@color/black"
-            android:textSize="@dimen/_14sdp"
+            android:textSize="@dimen/_12sdp"
             android:textStyle="normal" />
 
 
@@ -83,8 +83,8 @@
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:fontFamily="@font/nunito_semibold"
-                    android:padding="@dimen/_5sdp"
-                    android:layout_margin="@dimen/_5sdp"
+                    android:padding="@dimen/_2sdp"
+                    android:layout_margin="@dimen/_2sdp"
                     android:text="Latitude"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_14sdp"
@@ -96,8 +96,8 @@
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:fontFamily="@font/nunito"
-                    android:padding="@dimen/_5sdp"
-                    android:layout_margin="@dimen/_5sdp"
+                    android:padding="@dimen/_2sdp"
+                    android:layout_margin="@dimen/_2sdp"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_14sdp"
                     android:textStyle="normal" />
@@ -116,8 +116,8 @@
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:fontFamily="@font/nunito_semibold"
-                    android:padding="@dimen/_5sdp"
-                    android:layout_margin="@dimen/_5sdp"
+                    android:padding="@dimen/_2sdp"
+                    android:layout_margin="@dimen/_2sdp"
                     android:text="Longitude"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_14sdp"
@@ -129,8 +129,8 @@
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:fontFamily="@font/nunito"
-                    android:padding="@dimen/_5sdp"
-                    android:layout_margin="@dimen/_5sdp"
+                    android:padding="@dimen/_2sdp"
+                    android:layout_margin="@dimen/_2sdp"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_14sdp"
                     android:textStyle="normal" />

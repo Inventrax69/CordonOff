@@ -4,7 +4,6 @@ package com.myapp.nfcapplication;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -34,19 +33,16 @@ public class DrawerFragment extends Fragment implements View.OnClickListener {
     private RecyclerView recyclerView;
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
-
     private View containerView;
     private View layout;
     private TextView txtLoginUser;
     private AppCompatActivity appCompatActivity;
-
     private IntentFilter mIntentFilter;
     private String userName = "";
     ImageView fText, fClose;
     TextView txtUserName, txtPhoneNumber, txtRegDate, btnLogOut, tvAppVersion, txtLocation, btnHome, btnAbout,btnAboutSelf,btnTandC;
     SharedPreferences prefs;
     RelativeLayout relMap;
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -60,12 +56,10 @@ public class DrawerFragment extends Fragment implements View.OnClickListener {
 
         appCompatActivity = (AppCompatActivity) getActivity();
 
-
         loadFormControls();
 
         return layout;
     }
-
 
     public void loadFormControls() {
 
@@ -136,12 +130,14 @@ public class DrawerFragment extends Fragment implements View.OnClickListener {
             btnAbout.setBackground(getResources().getDrawable(R.drawable.item_pressed_background));
         }
         if (getActivity() instanceof AboutQuartineActivity) {
-            btnAboutSelf.setTextColor(Color.parseColor("#FF373D59"));
-            btnAboutSelf.setBackgroundColor(Color.parseColor("#FFFFFF"));
+/*            btnAboutSelf.setTextColor(Color.parseColor("#FF373D59"));
+            btnAboutSelf.setBackgroundColor(Color.parseColor("#FFFFFF"));*/
+            btnAboutSelf.setBackground(getResources().getDrawable(R.drawable.item_pressed_background));
         }
         if (getActivity() instanceof TermsAndConditionActivity) {
-            btnTandC.setTextColor(Color.parseColor("#FF373D59"));
-            btnTandC.setBackgroundColor(Color.parseColor("#FFFFFF"));;
+/*            btnTandC.setTextColor(Color.parseColor("#FF373D59"));
+            btnTandC.setBackgroundColor(Color.parseColor("#FFFFFF"));*/
+            btnTandC.setBackground(getResources().getDrawable(R.drawable.item_pressed_background));
         }
 
 
@@ -226,7 +222,6 @@ public class DrawerFragment extends Fragment implements View.OnClickListener {
 
     }
 
-
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -289,7 +284,6 @@ public class DrawerFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onPause() {
         super.onPause();
-
     }
 
 
