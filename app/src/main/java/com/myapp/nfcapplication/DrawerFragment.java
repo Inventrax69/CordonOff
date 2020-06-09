@@ -125,8 +125,6 @@ public class DrawerFragment extends Fragment implements View.OnClickListener {
             btnHome.setBackground(getResources().getDrawable(R.drawable.item_pressed_background));
         }
         if (getActivity() instanceof AboutCovidActivity) {
-           /* btnAbout.setTextColor(Color.parseColor("#FF373D59"));
-            btnAbout.setBackgroundColor(Color.parseColor("#FFFFFF"));*/
             btnAbout.setBackground(getResources().getDrawable(R.drawable.item_pressed_background));
         }
         if (getActivity() instanceof AboutQuartineActivity) {
